@@ -1,0 +1,53 @@
+object view_formPrincipal: Tview_formPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnAdd: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 80.000000000000000000
+    TabOrder = 0
+    Text = 'Add'
+    OnClick = btnAddClick
+  end
+  object btnImplicit: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 120.000000000000000000
+    TabOrder = 1
+    Text = 'Implicit'
+    OnClick = btnImplicitClick
+  end
+  object btnPositiveNegative: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Positive / Negative'
+    OnClick = btnPositiveNegativeClick
+  end
+  object btnInc: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 200.000000000000000000
+    TabOrder = 3
+    Text = 'Inc'
+    OnClick = btnIncClick
+  end
+  object btnEqual: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 240.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Equal'
+    OnClick = btnEqualClick
+  end
+end

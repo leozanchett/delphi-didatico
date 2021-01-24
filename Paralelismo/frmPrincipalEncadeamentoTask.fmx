@@ -1,0 +1,63 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnTask1: TButton
+    Position.X = 40.000000000000000000
+    Position.Y = 88.000000000000000000
+    TabOrder = 3
+    Text = 'TASK 1'
+    OnClick = btnTask1Click
+  end
+  object btnTask2: TButton
+    Position.X = 144.000000000000000000
+    Position.Y = 88.000000000000000000
+    TabOrder = 2
+    Text = 'TASK 2'
+    OnClick = btnTask2Click
+  end
+  object btnGerenciasTasks: TButton
+    Position.X = 249.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Gerenciar Tasks'
+    OnClick = btnGerenciasTasksClick
+  end
+  object Label1: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label1'
+    TabOrder = 6
+  end
+  object Label2: TLabel
+    Position.X = 152.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label2'
+    TabOrder = 5
+  end
+  object Label3: TLabel
+    Position.X = 256.000000000000000000
+    Position.Y = 174.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label3'
+    TabOrder = 4
+  end
+end

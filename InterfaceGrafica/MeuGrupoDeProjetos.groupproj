@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{96E8E6FB-AE04-4D2D-B707-225E72D633F6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CursoDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CursoDelphi">
+        <MSBuild Projects="CursoDelphi.dproj"/>
+    </Target>
+    <Target Name="CursoDelphi:Clean">
+        <MSBuild Projects="CursoDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CursoDelphi:Make">
+        <MSBuild Projects="CursoDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CursoDelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CursoDelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CursoDelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

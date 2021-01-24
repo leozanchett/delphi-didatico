@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DFC686B3-513B-4294-A456-7FD46096C1C1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="EntendendoBiblioteca.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="IFuture.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="EncadeandoTask.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ParallelFor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="REST.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FixandoThreads.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EntendendoBiblioteca">
+        <MSBuild Projects="EntendendoBiblioteca.dproj"/>
+    </Target>
+    <Target Name="EntendendoBiblioteca:Clean">
+        <MSBuild Projects="EntendendoBiblioteca.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EntendendoBiblioteca:Make">
+        <MSBuild Projects="EntendendoBiblioteca.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="IFuture">
+        <MSBuild Projects="IFuture.dproj"/>
+    </Target>
+    <Target Name="IFuture:Clean">
+        <MSBuild Projects="IFuture.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IFuture:Make">
+        <MSBuild Projects="IFuture.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EncadeandoTask">
+        <MSBuild Projects="EncadeandoTask.dproj"/>
+    </Target>
+    <Target Name="EncadeandoTask:Clean">
+        <MSBuild Projects="EncadeandoTask.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EncadeandoTask:Make">
+        <MSBuild Projects="EncadeandoTask.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ParallelFor">
+        <MSBuild Projects="ParallelFor.dproj"/>
+    </Target>
+    <Target Name="ParallelFor:Clean">
+        <MSBuild Projects="ParallelFor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ParallelFor:Make">
+        <MSBuild Projects="ParallelFor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="REST">
+        <MSBuild Projects="REST.dproj"/>
+    </Target>
+    <Target Name="REST:Clean">
+        <MSBuild Projects="REST.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="REST:Make">
+        <MSBuild Projects="REST.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FixandoThreads">
+        <MSBuild Projects="FixandoThreads.dproj"/>
+    </Target>
+    <Target Name="FixandoThreads:Clean">
+        <MSBuild Projects="FixandoThreads.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FixandoThreads:Make">
+        <MSBuild Projects="FixandoThreads.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EntendendoBiblioteca;IFuture;EncadeandoTask;ParallelFor;REST;FixandoThreads"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EntendendoBiblioteca:Clean;IFuture:Clean;EncadeandoTask:Clean;ParallelFor:Clean;REST:Clean;FixandoThreads:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EntendendoBiblioteca:Make;IFuture:Make;EncadeandoTask:Make;ParallelFor:Make;REST:Make;FixandoThreads:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

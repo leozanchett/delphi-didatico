@@ -1,0 +1,223 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 374
+  ClientWidth = 741
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object btnTeste: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 328.000000000000000000
+    TabOrder = 0
+    Text = 'TESTE TASK'
+    Visible = False
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 385.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label1'
+    Visible = False
+    TabOrder = 1
+  end
+  object Label2: TLabel
+    Position.X = 312.000000000000000000
+    Position.Y = 40.000000000000000000
+    Text = 'Label2'
+    Visible = False
+    TabOrder = 2
+  end
+  object Label3: TLabel
+    Position.X = 440.000000000000000000
+    Position.Y = 40.000000000000000000
+    Text = 'Label3'
+    Visible = False
+    TabOrder = 3
+  end
+  object Label4: TLabel
+    Position.X = 576.000000000000000000
+    Position.Y = 40.000000000000000000
+    Text = 'Label4'
+    Visible = False
+    TabOrder = 4
+  end
+  object btnIFuture: TButton
+    StyledSettings = [Family, Size, Style]
+    Position.X = 296.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Iniciar Duelo'
+    TextSettings.FontColor = claDarkgreen
+    OnClick = btnIFutureClick
+  end
+  object edtPlayer1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 7
+    Text = 'Player 1'
+    Position.X = 24.000000000000000000
+    Position.Y = 240.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object barHPP1: TProgressBar
+    Orientation = Horizontal
+    Position.X = 24.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 305.000000000000000000
+    Size.Height = 100.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'barHPP1Style1'
+  end
+  object barHPP2: TProgressBar
+    Orientation = Horizontal
+    Position.X = 384.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 313.000000000000000000
+    Size.Height = 100.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'progressbarstyle'
+  end
+  object lblAcaoP1: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 32.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+    TabOrder = 10
+  end
+  object lblAcaoP2: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 400.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+    TabOrder = 11
+  end
+  object lblFimDeJogo: TLabel
+    StyledSettings = [Family]
+    Position.X = 80.000000000000000000
+    Size.Width = 553.000000000000000000
+    Size.Height = 100.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 50.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claDarkgreen
+    TextSettings.HorzAlign = Center
+    TextSettings.Trimming = Word
+    TabOrder = 12
+  end
+  object gbDificuldade: TGroupBox
+    Position.X = 320.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 385.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Dificuldade'
+    TabOrder = 13
+    object rbFacil: TRadioButton
+      IsChecked = True
+      Position.X = 16.000000000000000000
+      Position.Y = 20.000000000000000000
+      TabOrder = 0
+      Text = 'F'#225'cil'
+    end
+    object rbMedio: TRadioButton
+      Position.X = 136.000000000000000000
+      Position.Y = 20.000000000000000000
+      TabOrder = 1
+      Text = 'Moderado'
+    end
+    object rbDificil: TRadioButton
+      Position.X = 280.000000000000000000
+      Position.Y = 20.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Dif'#237'cil'
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 688
+    Top = 272
+  end
+  object lblP1Escudo: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Pontos de escudo'
+    TabOrder = 15
+  end
+  object lblP2Escudo: TLabel
+    Position.X = 384.000000000000000000
+    Position.Y = 80.000000000000000000
+    Text = 'Pontos de escudo'
+    TabOrder = 16
+  end
+  object lblP1PtsEscudo: TLabel
+    Position.X = 128.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '0'
+    TabOrder = 18
+  end
+  object lblP2PtsEscudo: TLabel
+    Position.X = 488.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '0'
+    TabOrder = 17
+  end
+  object lblHPP1: TLabel
+    StyledSettings = [Family]
+    Position.X = 104.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 40.000000000000000000
+    TextSettings.FontColor = claCrimson
+    TextSettings.HorzAlign = Center
+    Text = '100'
+    TabOrder = 20
+  end
+  object lblHPP2: TLabel
+    StyledSettings = [Family]
+    Position.X = 472.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 40.000000000000000000
+    TextSettings.FontColor = claCrimson
+    TextSettings.HorzAlign = Center
+    Text = '100'
+    TabOrder = 19
+  end
+end

@@ -1,0 +1,323 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Caption = 'Form6'
+  ClientHeight = 480
+  ClientWidth = 823
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object StringGrid1: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 8.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 793.000000000000000000
+    Size.Height = 161.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    RowCount = 1
+    Viewport.Width = 789.000000000000000000
+    Viewport.Height = 136.000000000000000000
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Text = '89600-000'
+    Position.X = 120.000000000000000000
+    Position.Y = 176.000000000000000000
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 7
+    Position.X = 8.000000000000000000
+    Position.Y = 208.000000000000000000
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    Position.X = 8.000000000000000000
+    Position.Y = 240.000000000000000000
+  end
+  object Edit4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    Position.X = 120.000000000000000000
+    Position.Y = 208.000000000000000000
+  end
+  object Edit5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Text = 'Joa'#231'aba'
+    Position.X = 8.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Edit6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    Text = 'SC'
+    Position.X = 8.000000000000000000
+    Position.Y = 176.000000000000000000
+  end
+  object Edit7: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    Text = '4209003'
+    Position.X = 8.000000000000000000
+    Position.Y = 144.000000000000000000
+  end
+  object Edit8: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Position.X = 120.000000000000000000
+    Position.Y = 144.000000000000000000
+  end
+  object btnPesquisar: TButton
+    Position.X = 240.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'Pesquisar'
+    OnClick = btnPesquisarClick
+  end
+  object edtPesquisar: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    KeyboardType = NumberPad
+    MaxLength = 8
+    Position.X = 8.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Pesquisar'
+  end
+  object AniIndicator1: TAniIndicator
+    Position.X = 240.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 217.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'http://viacep.com.br/'
+    Params = <>
+    RaiseExceptionOn500 = False
+    Left = 112
+    Top = 16
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'cep'
+        Value = '89600000'
+      end>
+    Resource = 'ws/{cep}/json'
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 304
+    Top = 192
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'text/html'
+    Left = 208
+    Top = 16
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'cep'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'logradouro'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'complemento'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'bairro'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'localidade'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'uf'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ibge'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'gia'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ddd'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'siafi'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 360
+    Top = 128
+    object FDMemTable1cep: TWideStringField
+      FieldName = 'cep'
+      Size = 255
+    end
+    object FDMemTable1logradouro: TWideStringField
+      FieldName = 'logradouro'
+      Size = 255
+    end
+    object FDMemTable1complemento: TWideStringField
+      FieldName = 'complemento'
+      Size = 255
+    end
+    object FDMemTable1bairro: TWideStringField
+      FieldName = 'bairro'
+      Size = 255
+    end
+    object FDMemTable1localidade: TWideStringField
+      FieldName = 'localidade'
+      Size = 255
+    end
+    object FDMemTable1uf: TWideStringField
+      FieldName = 'uf'
+      Size = 255
+    end
+    object FDMemTable1ibge: TWideStringField
+      FieldName = 'ibge'
+      Size = 255
+    end
+    object FDMemTable1gia: TWideStringField
+      FieldName = 'gia'
+      Size = 255
+    end
+    object FDMemTable1ddd: TWideStringField
+      FieldName = 'ddd'
+      Size = 255
+    end
+    object FDMemTable1siafi: TWideStringField
+      FieldName = 'siafi'
+      Size = 255
+    end
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTable1
+    FieldDefs = <>
+    Response = RESTResponse1
+    Left = 472
+    Top = 112
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTable1
+    ScopeMappings = <>
+    Left = 464
+    Top = 184
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
+    end
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'cep'
+      Control = Edit1
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'logradouro'
+      Control = Edit2
+      Track = False
+    end
+    object LinkControlToField3: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'complemento'
+      Control = Edit3
+      Track = False
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'bairro'
+      Control = Edit4
+      Track = False
+    end
+    object LinkControlToField5: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'localidade'
+      Control = Edit5
+      Track = False
+    end
+    object LinkControlToField6: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'uf'
+      Control = Edit6
+      Track = False
+    end
+    object LinkControlToField7: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'ibge'
+      Control = Edit7
+      Track = False
+    end
+    object LinkControlToField8: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'gia'
+      Control = Edit8
+      Track = False
+    end
+  end
+end

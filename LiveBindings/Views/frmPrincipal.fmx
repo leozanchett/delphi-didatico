@@ -1,0 +1,40 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object btnCortar: TButton
+    Position.X = 40.000000000000000000
+    Position.Y = 152.000000000000000000
+    TabOrder = 0
+    Text = 'CORTAR'
+    OnClick = btnCortarClick
+  end
+  object btnVerifyPapel: TButton
+    Position.X = 24.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'VERIFICAR PAPEL'
+    OnClick = btnVerifyPapelClick
+  end
+  object MenuBar1: TMenuBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object MenuItem1: TMenuItem
+      Text = 'Controle de acesso Live Bindings'
+      OnClick = MenuItem1Click
+    end
+  end
+end

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CEA32C65-B46D-4F20-8B9D-A90EEDF26C8A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ClassOperators.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Absolute.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RecordsEVariants.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClassOperators">
+        <MSBuild Projects="ClassOperators.dproj"/>
+    </Target>
+    <Target Name="ClassOperators:Clean">
+        <MSBuild Projects="ClassOperators.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClassOperators:Make">
+        <MSBuild Projects="ClassOperators.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Absolute">
+        <MSBuild Projects="Absolute.dproj"/>
+    </Target>
+    <Target Name="Absolute:Clean">
+        <MSBuild Projects="Absolute.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Absolute:Make">
+        <MSBuild Projects="Absolute.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RecordsEVariants">
+        <MSBuild Projects="RecordsEVariants.dproj"/>
+    </Target>
+    <Target Name="RecordsEVariants:Clean">
+        <MSBuild Projects="RecordsEVariants.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RecordsEVariants:Make">
+        <MSBuild Projects="RecordsEVariants.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClassOperators;Absolute;RecordsEVariants"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClassOperators:Clean;Absolute:Clean;RecordsEVariants:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClassOperators:Make;Absolute:Make;RecordsEVariants:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

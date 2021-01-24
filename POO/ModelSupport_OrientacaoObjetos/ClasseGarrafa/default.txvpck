@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="6mnx3ifsxmt_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,123,146" />
+      <reference referencedUin="delphi:e_field:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa.Cor" />
+      <reference referencedUin="delphi:e_field:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa.Modelo" />
+      <reference referencedUin="delphi:e_field:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa.Tampa" />
+      <reference referencedUin="delphi:e_method:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa.AmazenarLiquido(System.string)" />
+      <reference referencedUin="delphi:e_field:src:OrientacaoObjetos:ClasseGarrafa.TGarrafa.Teste">
+        <property name="bounds" value="45,15,0,0" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:OrientacaoObjetos:ClasseGarrafa.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

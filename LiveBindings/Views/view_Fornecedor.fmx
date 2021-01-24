@@ -1,0 +1,35 @@
+object frm_Fornecedor: Tfrm_Fornecedor
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnincluir: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 440.000000000000000000
+    TabOrder = 4
+    Text = 'Incluir'
+  end
+  object btnconsultar: TButton
+    Position.X = 336.000000000000000000
+    Position.Y = 440.000000000000000000
+    TabOrder = 1
+    Text = 'Consultar'
+  end
+  object btnexcluir: TButton
+    Position.X = 112.000000000000000000
+    Position.Y = 440.000000000000000000
+    TabOrder = 3
+    Text = 'Excluir'
+  end
+  object btnalterar: TButton
+    Position.X = 224.000000000000000000
+    Position.Y = 440.000000000000000000
+    TabOrder = 2
+    Text = 'Alterar'
+  end
+end
