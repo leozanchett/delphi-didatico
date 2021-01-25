@@ -19,12 +19,30 @@ object Form5: TForm5
     Width = 511
     Height = 163
     DataSource = DataSource1
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELEFONE'
+        Visible = True
+      end>
   end
   object edtID: TEdit
     Left = 24
@@ -62,6 +80,22 @@ object Form5: TForm5
       'select id, nome, telefone from usuario;')
     Left = 144
     Top = 184
+    object FDQuery1id: TIntegerField
+      DisplayLabel = 'ID'
+      FieldName = 'id'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQuery1NOME: TWideStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 100
+    end
+    object FDQuery1TELEFONE: TWideStringField
+      FieldName = 'TELEFONE'
+      Origin = 'TELEFONE'
+    end
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -77,6 +111,7 @@ object Form5: TForm5
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
+    OnDataChange = DataSource1DataChange
     Left = 248
     Top = 192
   end

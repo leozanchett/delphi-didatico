@@ -10,7 +10,7 @@ uses
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.Comp.DataSet, FireDAC.Phys.SQLite,
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, Vcl.Grids, Vcl.DBGrids,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, RttiUteis;
 
 type
   TForm5 = class(TForm)
@@ -18,10 +18,23 @@ type
     FDConnection1: TFDConnection;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
+
+    // ID | LABEL DO DATASET
+
+    [Bind('ID', 'Display Label ID')]
     edtID: TEdit;
+
+    [Bind('NOME','Display Label Nome')]
     edtNome: TEdit;
+
+    [Bind('TELEFONE', 'O Telefone')]
     edtEndereco: TEdit;
+
     Button1: TButton;
+    FDQuery1id: TIntegerField;
+    FDQuery1NOME: TWideStringField;
+    FDQuery1TELEFONE: TWideStringField;
+    procedure DataSource1DataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -33,6 +46,12 @@ var
 
 implementation
 
+
 {$R *.dfm}
+
+procedure TForm5.DataSource1DataChange(Sender: TObject; Field: TField);
+begin
+  TRttiUteis.DataSetToForm(FDQuery1, Self);
+end;
 
 end.
