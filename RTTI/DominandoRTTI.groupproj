@@ -1,18 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{3FEAA68E-D9A9-4EAD-9922-94F27933899B}</ProjectGuid>
+        <ProjectGuid>{5CDA06E0-F364-4569-9CD2-B4FCC21696AB}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="RTTIAula1.dproj">
+        <Projects Include="..\..\RTTI\RTTIAula4.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="RTTIAula2.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="RTTIAula3.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="RTTIAula4.dproj">
+        <Projects Include="RTTIAula5.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -23,50 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="RTTIAula1">
-        <MSBuild Projects="RTTIAula1.dproj"/>
-    </Target>
-    <Target Name="RTTIAula1:Clean">
-        <MSBuild Projects="RTTIAula1.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="RTTIAula1:Make">
-        <MSBuild Projects="RTTIAula1.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="RTTIAula2">
-        <MSBuild Projects="RTTIAula2.dproj"/>
-    </Target>
-    <Target Name="RTTIAula2:Clean">
-        <MSBuild Projects="RTTIAula2.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="RTTIAula2:Make">
-        <MSBuild Projects="RTTIAula2.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="RTTIAula3">
-        <MSBuild Projects="RTTIAula3.dproj"/>
-    </Target>
-    <Target Name="RTTIAula3:Clean">
-        <MSBuild Projects="RTTIAula3.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="RTTIAula3:Make">
-        <MSBuild Projects="RTTIAula3.dproj" Targets="Make"/>
-    </Target>
     <Target Name="RTTIAula4">
-        <MSBuild Projects="RTTIAula4.dproj"/>
+        <MSBuild Projects="..\..\RTTI\RTTIAula4.dproj"/>
     </Target>
     <Target Name="RTTIAula4:Clean">
-        <MSBuild Projects="RTTIAula4.dproj" Targets="Clean"/>
+        <MSBuild Projects="..\..\RTTI\RTTIAula4.dproj" Targets="Clean"/>
     </Target>
     <Target Name="RTTIAula4:Make">
-        <MSBuild Projects="RTTIAula4.dproj" Targets="Make"/>
+        <MSBuild Projects="..\..\RTTI\RTTIAula4.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RTTIAula5">
+        <MSBuild Projects="RTTIAula5.dproj"/>
+    </Target>
+    <Target Name="RTTIAula5:Clean">
+        <MSBuild Projects="RTTIAula5.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RTTIAula5:Make">
+        <MSBuild Projects="RTTIAula5.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="RTTIAula1;RTTIAula2;RTTIAula3;RTTIAula4"/>
+        <CallTarget Targets="RTTIAula4;RTTIAula5"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="RTTIAula1:Clean;RTTIAula2:Clean;RTTIAula3:Clean;RTTIAula4:Clean"/>
+        <CallTarget Targets="RTTIAula4:Clean;RTTIAula5:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="RTTIAula1:Make;RTTIAula2:Make;RTTIAula3:Make;RTTIAula4:Make"/>
+        <CallTarget Targets="RTTIAula4:Make;RTTIAula5:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

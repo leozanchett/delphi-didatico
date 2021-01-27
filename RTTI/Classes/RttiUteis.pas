@@ -3,10 +3,27 @@ unit RttiUteis;
 interface
 
 uses
-   System.Rtti, Vcl.Forms, Data.DB, Vcl.DBGrids;
+   System.Rtti, Vcl.Forms, Data.DB, Vcl.DBGrids, System.Classes;
   
    
 type
+  TTypeComponent = (tcEdit, tcMemo);
+
+  Form = class(TCustomAttribute)
+    private
+    FName: String;
+    FWidth: Integer;
+    FTypeComponent: TTypeComponent;
+    procedure SetName(const Value: String);
+    procedure SetTypeComponent(const Value: TTypeComponent);
+    procedure SetWidth(const Value: Integer);
+    public
+      constructor Create(_ATypeComponent: TTypeComponent; _AName: String; _AWidth: Integer);
+      property TypeComponent: TTypeComponent read FTypeComponent write SetTypeComponent;
+      property Name: String read FName write SetName;
+      property Width: Integer read FWidth write SetWidth;
+  end;
+
   NotNull = class(TCustomAttribute)
     private
       FMensagem: String;
@@ -35,6 +52,7 @@ type
       class function ListarMetodos<T: Class>(_AObj: T): String; static;
       class procedure ValidarCampos(_AObject: TObject);
       class procedure DataSetToForm(_ADataSet: TDataSet; _AForm: TForm);
+      class procedure ClassToFormCreate<T: Class>(_AEmbeded: TForm);
       end;
 
    Bind = class(TCustomAttribute)
@@ -52,7 +70,7 @@ type
 implementation
 
 uses
-  System.SysUtils, System.Classes, Vcl.StdCtrls;
+  System.SysUtils, Vcl.StdCtrls, System.TypInfo;
 { TRttiUteis }
 
 class function TRttiUteis.ListarMetodos<T>(_AObj: T): String;
@@ -101,6 +119,64 @@ begin
       end;
   finally
     AContexto.Free;
+  end;
+end;
+
+class procedure TRttiUteis.ClassToFormCreate<T>(_AEmbeded: TForm);
+var
+  ACtxRTTi : TRttiContext;
+  ATipoRTTi : TRttiType;
+  AproRTTi : TRttiProperty;
+  ACustomAtr: TCustomAttribute;
+  Ainfo : PTypeInfo;
+  AEdit: TEdit;
+  ACountTop, ACountLeft: Integer;
+  ALabel: TLabel;
+  AMemo: TMemo;
+begin
+  ACountTop := 10;
+  ACountLeft := 10;
+  ACtxRTTi := TRttiContext.Create;
+  try
+    Ainfo := System.TypeInfo(T);
+    ATipoRTTi := ACtxRTTi.GetType(Ainfo);
+    for AproRTTi in ATipoRTTi.GetProperties do
+      for ACustomAtr in AproRTTi.GetAttributes do begin
+        if ACustomAtr is Form then begin
+          with Form(ACustomAtr) do begin
+             if TypeComponent = tcEdit then begin
+              ALabel := TLabel.Create(_AEmbeded);
+              ALabel.Caption := Name;
+              ALabel.Top := ACountTop;
+              ALabel.Parent := _AEmbeded;
+              ALabel.Left := ACountLeft;
+              ALabel.Name := 'lbl_'+Name;
+            
+              AEdit := TEdit.Create(_AEmbeded);
+              AEdit.Parent := _AEmbeded;
+              AEdit.Name := 'edt_'+Name;
+              AEdit.Width := Width;
+              AEdit.Text := '';
+              AEdit.Top := ACountTop + 15;
+              AEdit.Left := ACountLeft;
+              ACountTop := ACountTop + 50;
+            end;
+            if TypeComponent = tcMemo then begin
+              AMemo := TMemo.Create(_AEmbeded);
+              AMemo.Parent := _AEmbeded;
+              AMemo.Name := 'mem_'+Name;
+              AMemo.Lines.Text := Name;
+              AMemo.Top := ACountTop + 30;
+              AMemo.Left := ACountLeft;
+              AMemo.Width := Width;
+            end;
+
+          end;
+          
+        end;
+      end;
+  finally
+    ACtxRTTi.Free;
   end;
 end;
 
@@ -201,6 +277,30 @@ end;
 procedure Bind.SetNomeCampo(const Value: String);
 begin
   FNomeCampo := Value;
+end;
+
+{ Form }
+
+constructor Form.Create(_ATypeComponent: TTypeComponent; _AName: String; _AWidth: Integer);
+begin
+  FName := _AName;
+  FWidth := _AWidth;
+  FTypeComponent := _ATypeComponent;
+end;
+
+procedure Form.SetName(const Value: String);
+begin
+  FName := Value;
+end;
+
+procedure Form.SetTypeComponent(const Value: TTypeComponent);
+begin
+  FTypeComponent := Value;
+end;
+
+procedure Form.SetWidth(const Value: Integer);
+begin
+  FWidth := Value;
 end;
 
 end.
