@@ -12,7 +12,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TDAO, DAO);
-  Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

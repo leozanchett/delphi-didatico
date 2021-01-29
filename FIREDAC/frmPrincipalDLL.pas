@@ -14,8 +14,12 @@ type
   TForm2 = class(TForm)
     btnCreateTable: TButton;
     btnDropTable: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    btnExecSQLScalar: TButton;
     procedure btnCreateTableClick(Sender: TObject);
     procedure btnDropTableClick(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +42,16 @@ end;
 procedure TForm2.btnDropTableClick(Sender: TObject);
 begin
   DAO.FDACConexao.ExecSQL('DROP TABLE Slave', True);
+end;
+
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+  if StrToIntDef(Edit1.Text, 0) > 0 then begin
+    Edit2.Text :=  DAO.FDACConexao.ExecSQLScalar('SELECT nome FROM USUARIO WHERE ID= :xid',[Edit1.Text]);
+    if String(Edit2.Text).IsEmpty then
+      Edit2.Text := Format('Não houve resultados pelo id %s ',[Edit1.Text]);
+  end else
+     Edit2.Text := '';
 end;
 
 end.
