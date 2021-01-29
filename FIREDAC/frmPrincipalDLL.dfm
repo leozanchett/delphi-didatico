@@ -33,7 +33,7 @@ object Form2: TForm2
   end
   object Edit1: TEdit
     Left = 176
-    Top = 56
+    Top = 40
     Width = 121
     Height = 21
     TabOrder = 2
@@ -41,7 +41,7 @@ object Form2: TForm2
   end
   object Edit2: TEdit
     Left = 176
-    Top = 90
+    Top = 67
     Width = 201
     Height = 21
     TabOrder = 3
@@ -53,5 +53,43 @@ object Form2: TForm2
     Height = 25
     Caption = 'ExecSQLScalar'
     TabOrder = 4
+  end
+  object btnResultSet: TButton
+    Left = 16
+    Top = 164
+    Width = 129
+    Height = 25
+    Caption = 'ResultSet'
+    TabOrder = 5
+    OnClick = btnResultSetClick
+  end
+  object DBGrid1: TDBGrid
+    Left = 176
+    Top = 94
+    Width = 441
+    Height = 197
+    DataSource = DataSource1
+    TabOrder = 6
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DataSource1: TDataSource
+    DataSet = FDMemTable1
+    Left = 400
+    Top = 216
+  end
+  object FDMemTable1: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 520
+    Top = 24
   end
 end

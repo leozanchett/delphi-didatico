@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
-  FireDAC.Stan.ExprFuncs, Vcl.StdCtrls, FiredacDAO;
+  FireDAC.Stan.ExprFuncs, Vcl.StdCtrls, FiredacDAO, Vcl.Grids, Vcl.DBGrids,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Dapt;
 
 type
   TForm2 = class(TForm)
@@ -17,9 +18,14 @@ type
     Edit1: TEdit;
     Edit2: TEdit;
     btnExecSQLScalar: TButton;
+    btnResultSet: TButton;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
+    FDMemTable1: TFDMemTable;
     procedure btnCreateTableClick(Sender: TObject);
     procedure btnDropTableClick(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure btnResultSetClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +48,12 @@ end;
 procedure TForm2.btnDropTableClick(Sender: TObject);
 begin
   DAO.FDACConexao.ExecSQL('DROP TABLE Slave', True);
+end;
+
+procedure TForm2.btnResultSetClick(Sender: TObject);
+begin
+  DAO.FDACConexao.ExecSQL('SELECT * FROM USUARIO',TDataSet(FDMemTable1));
+  DataSource1.DataSet := FDMemTable1;
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
