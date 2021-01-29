@@ -11,11 +11,12 @@ object Form2: TForm2
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object btnCreateTable: TButton
     Left = 16
-    Top = 48
+    Top = 24
     Width = 129
     Height = 25
     Caption = 'CREATE TABLE'
@@ -24,7 +25,7 @@ object Form2: TForm2
   end
   object btnDropTable: TButton
     Left = 16
-    Top = 88
+    Top = 64
     Width = 129
     Height = 25
     Caption = 'DROP TABLE'
@@ -33,22 +34,22 @@ object Form2: TForm2
   end
   object Edit1: TEdit
     Left = 176
-    Top = 40
+    Top = 24
     Width = 121
     Height = 21
     TabOrder = 2
     OnChange = Edit1Change
   end
   object Edit2: TEdit
-    Left = 176
-    Top = 67
-    Width = 201
+    Left = 303
+    Top = 24
+    Width = 314
     Height = 21
     TabOrder = 3
   end
   object btnExecSQLScalar: TButton
     Left = 16
-    Top = 127
+    Top = 103
     Width = 129
     Height = 25
     Caption = 'ExecSQLScalar'
@@ -56,7 +57,7 @@ object Form2: TForm2
   end
   object btnResultSet: TButton
     Left = 16
-    Top = 164
+    Top = 140
     Width = 129
     Height = 25
     Caption = 'ResultSet'
@@ -65,9 +66,9 @@ object Form2: TForm2
   end
   object DBGrid1: TDBGrid
     Left = 176
-    Top = 94
+    Top = 51
     Width = 441
-    Height = 197
+    Height = 224
     DataSource = DataSource1
     TabOrder = 6
     TitleFont.Charset = DEFAULT_CHARSET
@@ -75,6 +76,15 @@ object Form2: TForm2
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object btnInsert: TButton
+    Left = 16
+    Top = 177
+    Width = 129
+    Height = 25
+    Caption = 'Insert Param'
+    TabOrder = 7
+    OnClick = btnInsertClick
   end
   object DataSource1: TDataSource
     DataSet = FDMemTable1
@@ -89,7 +99,7 @@ object Form2: TForm2
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 520
-    Top = 24
+    Left = 456
+    Top = 200
   end
 end

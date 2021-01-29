@@ -22,10 +22,12 @@ type
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
     FDMemTable1: TFDMemTable;
+    btnInsert: TButton;
     procedure btnCreateTableClick(Sender: TObject);
     procedure btnDropTableClick(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure btnResultSetClick(Sender: TObject);
+    procedure btnInsertClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +50,14 @@ end;
 procedure TForm2.btnDropTableClick(Sender: TObject);
 begin
   DAO.FDACConexao.ExecSQL('DROP TABLE Slave', True);
+end;
+
+procedure TForm2.btnInsertClick(Sender: TObject);
+begin
+  DAO.FDACConexao.ExecSQL(
+  'INSERT INTO USUARIO (NOME, TELEFONE) '+
+  'VALUES (:NOME, :TELEFONE) ',[Edit1.Text, Edit2.Text],
+  [ftString, ftString]);
 end;
 
 procedure TForm2.btnResultSetClick(Sender: TObject);
