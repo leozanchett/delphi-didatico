@@ -2,7 +2,7 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 299
+  ClientHeight = 485
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -86,6 +86,13 @@ object Form2: TForm2
     TabOrder = 7
     OnClick = btnInsertClick
   end
+  object Memo1: TMemo
+    Left = 16
+    Top = 296
+    Width = 601
+    Height = 181
+    TabOrder = 8
+  end
   object DataSource1: TDataSource
     DataSet = FDMemTable1
     Left = 400
@@ -101,5 +108,20 @@ object Form2: TForm2
     UpdateOptions.AutoCommitUpdates = True
     Left = 456
     Top = 200
+  end
+  object FDMoniCustomClientLink1: TFDMoniCustomClientLink
+    OnOutput = FDMoniCustomClientLink1Output
+    Left = 128
+    Top = 360
+  end
+  object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
+    FileName = 'log.txt'
+    Left = 248
+    Top = 368
+  end
+  object FDMoniRemoteClientLink1: TFDMoniRemoteClientLink
+    Tracing = True
+    Left = 438
+    Top = 342
   end
 end

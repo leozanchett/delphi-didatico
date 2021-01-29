@@ -9,7 +9,9 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
   FireDAC.Stan.ExprFuncs, Vcl.StdCtrls, FiredacDAO, Vcl.Grids, Vcl.DBGrids,
-  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Dapt;
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Dapt,
+  FireDAC.Moni.Base, FireDAC.Moni.Custom, FireDAC.Moni.FlatFile,
+  FireDAC.Moni.RemoteClient;
 
 type
   TForm2 = class(TForm)
@@ -23,11 +25,17 @@ type
     DataSource1: TDataSource;
     FDMemTable1: TFDMemTable;
     btnInsert: TButton;
+    FDMoniCustomClientLink1: TFDMoniCustomClientLink;
+    Memo1: TMemo;
+    FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
+    FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
     procedure btnCreateTableClick(Sender: TObject);
     procedure btnDropTableClick(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure btnResultSetClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
+    procedure FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
+      const AClassName, AObjName, AMessage: string);
   private
     { Private declarations }
   public
@@ -69,11 +77,15 @@ end;
 procedure TForm2.Edit1Change(Sender: TObject);
 begin
   if StrToIntDef(Edit1.Text, 0) > 0 then begin
-    Edit2.Text :=  DAO.FDACConexao.ExecSQLScalar('SELECT nome FROM USUARIO WHERE ID= :xid',[Edit1.Text]);
-    if String(Edit2.Text).IsEmpty then
-      Edit2.Text := Format('Não houve resultados pelo id %s ',[Edit1.Text]);
+    Edit2.Text := DAO.ExecutarSqlScalar(Edit1.Text);
   end else
      Edit2.Text := '';
+end;
+
+procedure TForm2.FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
+  const AClassName, AObjName, AMessage: string);
+begin
+  Memo1.Lines.Add(AMessage);
 end;
 
 end.

@@ -1,17 +1,22 @@
 object DAO: TDAO
   OldCreateOrder = False
-  Height = 150
-  Width = 342
+  Height = 223
+  Width = 432
   object FDACConexao: TFDConnection
     Params.Strings = (
       
         'Database=C:\Users\Easy\Documents\Clube de programadores Delphi\B' +
         'anco SQLite\banco.db'
       'LockingMode=Normal'
+      'MonitorBy=Remote'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 216
     Top = 56
+  end
+  object FDMoniRemoteClientLink1: TFDMoniRemoteClientLink
+    Tracing = True
+    Left = 110
+    Top = 102
   end
 end
