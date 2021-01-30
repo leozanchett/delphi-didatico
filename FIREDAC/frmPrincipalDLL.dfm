@@ -34,7 +34,7 @@ object Form2: TForm2
   end
   object Edit1: TEdit
     Left = 176
-    Top = 24
+    Top = 53
     Width = 121
     Height = 21
     TabOrder = 2
@@ -42,7 +42,7 @@ object Form2: TForm2
   end
   object Edit2: TEdit
     Left = 303
-    Top = 24
+    Top = 53
     Width = 314
     Height = 21
     TabOrder = 3
@@ -66,9 +66,9 @@ object Form2: TForm2
   end
   object DBGrid1: TDBGrid
     Left = 176
-    Top = 51
+    Top = 80
     Width = 441
-    Height = 224
+    Height = 195
     DataSource = DataSource1
     TabOrder = 6
     TitleFont.Charset = DEFAULT_CHARSET
@@ -92,6 +92,14 @@ object Form2: TForm2
     Width = 601
     Height = 181
     TabOrder = 8
+  end
+  object Edit3: TEdit
+    Left = 176
+    Top = 26
+    Width = 121
+    Height = 21
+    TabOrder = 9
+    TextHint = 'Id'
   end
   object DataSource1: TDataSource
     DataSet = FDMemTable1

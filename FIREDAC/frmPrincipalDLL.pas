@@ -29,6 +29,7 @@ type
     Memo1: TMemo;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
+    Edit3: TEdit;
     procedure btnCreateTableClick(Sender: TObject);
     procedure btnDropTableClick(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
@@ -37,6 +38,7 @@ type
     procedure FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
       const AClassName, AObjName, AMessage: string);
   private
+    procedure ExcecaoFiredac(_AExcecao: TFDCommandExceptionKind);
     { Private declarations }
   public
     { Public declarations }
@@ -51,8 +53,34 @@ implementation
 
 procedure TForm2.btnCreateTableClick(Sender: TObject);
 begin
-  DAO.FDACConexao.ExecSQL('CREATE TABLE Slave (id Integer not null primary key, descricao varchar(50))');
-  ShowMessage('TABELA CRIADA COM SUCESSO !');
+  try
+    DAO.FDACConexao.ExecSQL('CREATE TABLE Slave (id Integer not null primary key, descricao varchar(50))');
+    ShowMessage('TABELA CRIADA COM SUCESSO !');
+  except
+     on E: EFDDBEngineException do
+      ExcecaoFiredac(e.Kind);
+  end;
+end;
+
+procedure TForm2.ExcecaoFiredac(_AExcecao: TFDCommandExceptionKind);
+begin
+    case _AExcecao of
+      ekOther: ;
+      ekNoDataFound: ;
+      ekTooManyRows: ;
+      ekRecordLocked: ShowMessage('Locked key');
+      ekUKViolated: ShowMessage('Violação de primary key');
+      ekFKViolated: ;
+      ekObjNotExists: ;
+      ekUserPwdInvalid: ;
+      ekUserPwdExpired: ;
+      ekUserPwdWillExpire: ;
+      ekCmdAborted: ;
+      ekServerGone: ;
+      ekServerOutput: ;
+      ekArrExecMalfunc: ;
+      ekInvalidParams: ;
+    end;
 end;
 
 procedure TForm2.btnDropTableClick(Sender: TObject);
@@ -62,10 +90,15 @@ end;
 
 procedure TForm2.btnInsertClick(Sender: TObject);
 begin
-  DAO.FDACConexao.ExecSQL(
-  'INSERT INTO USUARIO (NOME, TELEFONE) '+
-  'VALUES (:NOME, :TELEFONE) ',[Edit1.Text, Edit2.Text],
-  [ftString, ftString]);
+  try
+     DAO.FDACConexao.ExecSQL(
+    'INSERT INTO USUARIO (ID, NOME, TELEFONE) '+
+    'VALUES (:ID, :NOME, :TELEFONE) ',[Edit3.Text, Edit1.Text, Edit2.Text],
+    [ftString, ftString]);
+  except
+    on E: EFDDBEngineException do
+      ExcecaoFiredac(E.Kind);
+  end;
 end;
 
 procedure TForm2.btnResultSetClick(Sender: TObject);
