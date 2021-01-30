@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5D7568B7-D488-4872-B822-6FC0617C488B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DDL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Metadados.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DDL">
+        <MSBuild Projects="DDL.dproj"/>
+    </Target>
+    <Target Name="DDL:Clean">
+        <MSBuild Projects="DDL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DDL:Make">
+        <MSBuild Projects="DDL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Metadados">
+        <MSBuild Projects="Metadados.dproj"/>
+    </Target>
+    <Target Name="Metadados:Clean">
+        <MSBuild Projects="Metadados.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Metadados:Make">
+        <MSBuild Projects="Metadados.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DDL;Metadados"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DDL:Clean;Metadados:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DDL:Make;Metadados:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
