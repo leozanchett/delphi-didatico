@@ -9,6 +9,9 @@
         <Projects Include="Metadados.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="OrdenacaoDeDados.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Metadados:Make">
         <MSBuild Projects="Metadados.dproj" Targets="Make"/>
     </Target>
+    <Target Name="OrdenacaoDeDados">
+        <MSBuild Projects="OrdenacaoDeDados.dproj"/>
+    </Target>
+    <Target Name="OrdenacaoDeDados:Clean">
+        <MSBuild Projects="OrdenacaoDeDados.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrdenacaoDeDados:Make">
+        <MSBuild Projects="OrdenacaoDeDados.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="DDL;Metadados"/>
+        <CallTarget Targets="DDL;Metadados;OrdenacaoDeDados"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="DDL:Clean;Metadados:Clean"/>
+        <CallTarget Targets="DDL:Clean;Metadados:Clean;OrdenacaoDeDados:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="DDL:Make;Metadados:Make"/>
+        <CallTarget Targets="DDL:Make;Metadados:Make;OrdenacaoDeDados:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

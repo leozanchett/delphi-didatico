@@ -62,7 +62,7 @@ end;
 
 procedure TForm3.ListBox1Click(Sender: TObject);
 begin
-  if TListBox(Sender).ItemIndex > -1 then
+  if TListBox(Sender).ItemIndex >= 0 then
     DAO.FDACConexao.GetFieldNames('','',ListBox1.Items[ListBox1.ItemIndex],'',ListBox2.Items);
 end;
 
