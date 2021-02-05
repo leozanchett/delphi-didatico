@@ -12,6 +12,9 @@
         <Projects Include="OrdenacaoDeDados.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Batches.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="OrdenacaoDeDados:Make">
         <MSBuild Projects="OrdenacaoDeDados.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Batches">
+        <MSBuild Projects="Batches.dproj"/>
+    </Target>
+    <Target Name="Batches:Clean">
+        <MSBuild Projects="Batches.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Batches:Make">
+        <MSBuild Projects="Batches.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="DDL;Metadados;OrdenacaoDeDados"/>
+        <CallTarget Targets="DDL;Metadados;OrdenacaoDeDados;Batches"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="DDL:Clean;Metadados:Clean;OrdenacaoDeDados:Clean"/>
+        <CallTarget Targets="DDL:Clean;Metadados:Clean;OrdenacaoDeDados:Clean;Batches:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="DDL:Make;Metadados:Make;OrdenacaoDeDados:Make"/>
+        <CallTarget Targets="DDL:Make;Metadados:Make;OrdenacaoDeDados:Make;Batches:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
