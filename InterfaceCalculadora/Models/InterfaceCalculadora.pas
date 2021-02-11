@@ -5,9 +5,9 @@ interface
 type
   ICalculadora = Interface
      function getResult : double;
-     procedure setResult ( value : double );
-     procedure calculate ( x, y : double );
-     property result : double read getResult write setResult;
+     procedure setResult( _AValue : double );
+     procedure calculate( x, y : double );
+     property Resultado : double read getResult write setResult;
   end;
 
 implementation

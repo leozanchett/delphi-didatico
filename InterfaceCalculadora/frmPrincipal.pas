@@ -13,15 +13,12 @@ type
     edtValor2: TEdit;
     btnCalcular: TButton;
     rgOperacao: TRadioGroup;
-    radbDivisao: TRadioButton;
-    radbSoma: TRadioButton;
-    Button1: TButton;
     procedure edtValor1Change(Sender: TObject);
     procedure edtValor2Change(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure radbSomaClick(Sender: TObject);
     procedure radbDivisaoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure VerificaNumerosEdits;
     { Private declarations }
@@ -35,7 +32,7 @@ var
 implementation
 
 uses
-  InterfaceCalculadora, ClassSoma, ClassDivisao;
+  InterfaceCalculadora, ClassSoma, ClassDivisao, ClassMultiplica;
 
 {$R *.dfm}
 
@@ -43,31 +40,21 @@ procedure TForm2.btnCalcularClick(Sender: TObject);
 var
  x, y: double;
  ACalculadora : ICalculadora;
- AValorRadio : Byte;
 begin
    x := strToFloat(edtValor1.Text);
    y := strToFloat(edtValor2.Text);
-   if radbSoma.Checked then
-       AValorRadio := 0;
-   if radbDivisao.Checked then
-       AValorRadio := 1;
    try
-      case AValorRadio of
-      //case rgOperacao.Cursor of
+      case rgOperacao.ItemIndex of
          0 : ACalculadora := TSoma.Create;
          1 : ACalculadora := TDivisao.Create;
+         2 : ACalculadora := TMultiplica.Create;
       end;
       ACalculadora.calculate(x,y);
       memResultOper.Clear;
-      memResultOper.Lines.Text := floatToStr(ACalculadora.result);
+      memResultOper.Lines.Text := floatToStr(ACalculadora.Resultado);
    except
       raise
    end;
-end;
-
-procedure TForm2.Button1Click(Sender: TObject);
-begin
-  ShowMessage(rgOperacao.ItemIndex.ToString);
 end;
 
 procedure TForm2.edtValor1Change(Sender: TObject);
@@ -78,6 +65,11 @@ end;
 procedure TForm2.edtValor2Change(Sender: TObject);
 begin
   VerificaNumerosEdits;
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  ReportMemoryLeaksOnShutdown := True;
 end;
 
 procedure TForm2.radbDivisaoClick(Sender: TObject);
@@ -92,7 +84,7 @@ end;
 
 procedure TForm2.VerificaNumerosEdits;
 begin
-  if ( (Length(string(edtValor1.Text).Trim) > 0) and (Length(string(edtValor2.Text).Trim) > 0) and((radbDivisao.Checked) or (radbSoma.Checked)) )then
+  if (Length(string(edtValor1.Text).Trim) > 0) and (Length(string(edtValor2.Text).Trim) > 0) then
     btnCalcular.Enabled := true
   else
     btnCalcular.Enabled := false;

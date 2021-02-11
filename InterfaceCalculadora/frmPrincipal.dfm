@@ -3,7 +3,7 @@ object Form2: TForm2
   Top = 0
   BorderStyle = bsToolWindow
   Caption = 'Calculadora'
-  ClientHeight = 226
+  ClientHeight = 199
   ClientWidth = 362
   Color = clActiveCaption
   DefaultMonitor = dmDesktop
@@ -17,6 +17,7 @@ object Form2: TForm2
   Position = poDesktopCenter
   PrintScale = poNone
   Visible = True
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object memResultOper: TMemo
@@ -51,7 +52,7 @@ object Form2: TForm2
   end
   object edtValor2: TEdit
     Left = 176
-    Top = 128
+    Top = 125
     Width = 153
     Height = 21
     NumbersOnly = True
@@ -60,7 +61,7 @@ object Form2: TForm2
   end
   object btnCalcular: TButton
     Left = 176
-    Top = 172
+    Top = 152
     Width = 153
     Height = 25
     Caption = 'Calcular'
@@ -72,35 +73,13 @@ object Form2: TForm2
     Left = 8
     Top = 88
     Width = 137
-    Height = 109
+    Height = 89
     Caption = 'Opera'#231#227'o'
+    ItemIndex = 0
+    Items.Strings = (
+      'Soma'
+      'Divis'#227'o'
+      'Multiplica')
     TabOrder = 4
-  end
-  object radbSoma: TRadioButton
-    Left = 24
-    Top = 120
-    Width = 73
-    Height = 17
-    Caption = 'Soma'
-    TabOrder = 5
-    OnClick = radbSomaClick
-  end
-  object radbDivisao: TRadioButton
-    Left = 24
-    Top = 143
-    Width = 73
-    Height = 17
-    Caption = 'Divis'#227'o'
-    TabOrder = 6
-    OnClick = radbDivisaoClick
-  end
-  object Button1: TButton
-    Left = 208
-    Top = 203
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 7
-    OnClick = Button1Click
   end
 end

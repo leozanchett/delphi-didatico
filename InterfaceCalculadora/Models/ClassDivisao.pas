@@ -7,11 +7,11 @@ uses
 type
   TDivisao = class ( TInterfacedObject, ICalculadora )
   private
+     FResultado: Double;
      function getResult : double;
      procedure setResult (_AValue: double);
-  protected
-      procedure calculate ( x, y : double );
-      property Resultado: double read getResult write setResult;
+     procedure calculate ( x, y : double );
+
   end;
 
 implementation
@@ -32,12 +32,12 @@ end;
 
 function TDivisao.getResult: double;
 begin
-   Result := Resultado;
+   Result := FResultado;
 end;
 
 procedure TDivisao.setResult(_AValue: double);
 begin
-   Resultado := _AValue;
+   FResultado := _AValue;
 end;
 
 end.

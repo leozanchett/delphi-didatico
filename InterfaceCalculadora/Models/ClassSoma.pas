@@ -7,11 +7,11 @@ uses
 type
   TSoma = class(TInterfacedObject, ICalculadora )
   private
+      FResult: Double;
       procedure setResult(_AValue: double);
   protected
       function getResult : double;
-      procedure calculate ( x, y : double );
-      property Resultado: Double read getResult write setResult;
+      procedure calculate( x, y : double );
   end;
 implementation
 
@@ -24,12 +24,13 @@ end;
 
 function TSoma.getResult: double;
 begin
-  result := Resultado;
+  result := FResult;
 end;
+
 
 procedure TSoma.setResult(_AValue: double);
 begin
-   Resultado := _AValue;
+   FResult := _AValue;
 end;
 
 end.
