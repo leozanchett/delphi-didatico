@@ -40,13 +40,9 @@ uses
 procedure TForm2.btnTesteClick(Sender: TObject);
 begin
   case ComboBox1.ItemIndex of
-     //0 : FPessoa := TControllerPessoa.New.Pessoa(tpFisica);
-     //1 : FPessoa := TControllerPessoa.New.Pessoa(tpJuridica);
-     0 : TControllerPessoa.ModelPessoa(tpFisica);
-     1 : TControllerPessoa.ModelPessoa(tpFisica);
+     0 : FPessoa.CreatePessoa(tpFisica).Nome(Edit1.Text).Sobrenome(Edit2.Text).Display(ExibeResultado).NomeCompleto;
+     1 : FPessoa.CreatePessoa(tpJuridica).Nome(Edit1.Text).Sobrenome(Edit2.Text).Display(ExibeResultado).NomeCompleto;
   end;
-  FPessoa.ModelPessoa.Nome(Edit1.Text).Sobrenome(Edit2.Text).Display(ExibeResultado).NomeCompleto;
-  //Memo1.Lines.Add(FPessoa.Nome(Edit1.Text).Sobrenome(Edit2.Text).NomeCompleto);
 end;
 
 procedure TForm2.ExibeResultado(_AValue: String);
