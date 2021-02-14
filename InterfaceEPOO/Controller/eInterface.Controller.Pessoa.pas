@@ -14,7 +14,7 @@ type
       destructor Destroy; override;
       class function New: iControllerPessoa;
       function Pessoa(_AValue: TTypePessoa): IPessoa;
-      class function ModelPessoa(_ATipoPessoa: TTypePessoa): IPessoa;
+      function CreatePessoa(_ATipoPessoa: TTypePessoa): IPessoa;
   end;
 
 implementation
@@ -37,11 +37,9 @@ begin
    Result := Self.Create;
 end;
 
-class function TControllerPessoa.ModelPessoa(_ATipoPessoa: TTypePessoa): IPessoa;
-var
-  APessoa: IPessoa;
+function TControllerPessoa.CreatePessoa(_ATipoPessoa: TTypePessoa): IPessoa;
 begin
-  APessoa := self.New.Pessoa(_ATipoPessoa);
+  result := Pessoa(_ATipoPessoa);
 end;
 
 function TControllerPessoa.Pessoa(_AValue: TTypePessoa): IPessoa;
