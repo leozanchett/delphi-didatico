@@ -10,12 +10,12 @@ uses
 
 type
   TForm2 = class(TForm)
-    Button1: TButton;
+    btnTeste: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
     Memo1: TMemo;
     ComboBox1: TComboBox;
-    procedure Button1Click(Sender: TObject);
+    procedure btnTesteClick(Sender: TObject);
     procedure ExibeResultado(_AValue: String);
     procedure FormCreate(Sender: TObject);
   private
@@ -37,7 +37,7 @@ uses
 
 {$R *.dfm}
 
-procedure TForm2.Button1Click(Sender: TObject);
+procedure TForm2.btnTesteClick(Sender: TObject);
 begin
   case ComboBox1.ItemIndex of
      //0 : FPessoa := TControllerPessoa.New.Pessoa(tpFisica);
