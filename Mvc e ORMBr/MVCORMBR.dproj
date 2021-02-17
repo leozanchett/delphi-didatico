@@ -100,6 +100,8 @@
         <DCCReference Include="Model.Venda.pas"/>
         <DCCReference Include="Model.Item.pas"/>
         <DCCReference Include="Model.Interfaces.pas"/>
+        <DCCReference Include="Controller.Observer.Interfaces.pas"/>
+        <DCCReference Include="Controller.Observer.Item.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

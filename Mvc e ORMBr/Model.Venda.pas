@@ -3,17 +3,20 @@ unit Model.Venda;
 interface
 
 uses
-  Model.Interfaces;
+  Model.Interfaces, Controller.Observer.Interfaces;
 
   type
     TModelVenda = class(TInterfacedObject, iModelVenda)
       private
         FItem: iModelItem;
+        FObserverItem: iSubjectItem;
       public
         constructor Create;
         destructor Destroy;override;
         class function New: iModelVenda;
         function Item: iModelItem;
+        function ObserverItem(_Aobserver: iSubjectItem): iModelVenda; overload;
+        function ObserverItem: iSubjectItem; overload;
     end;
 
 implementation
@@ -42,6 +45,17 @@ end;
 class function TModelVenda.New: iModelVenda;
 begin
    Result := self.Create;
+end;
+
+function TModelVenda.ObserverItem: iSubjectItem;
+begin
+  Result := FObserverItem;
+end;
+
+function TModelVenda.ObserverItem(_Aobserver: iSubjectItem): iModelVenda;
+begin
+  Result := Self;
+  FObserverItem := _Aobserver;
 end;
 
 end.

@@ -8,7 +8,9 @@ uses
   Controller.Item in 'Controller.Item.pas',
   Model.Venda in 'Model.Venda.pas',
   Model.Item in 'Model.Item.pas',
-  Model.Interfaces in 'Model.Interfaces.pas';
+  Model.Interfaces in 'Model.Interfaces.pas',
+  Controller.Observer.Interfaces in 'Controller.Observer.Interfaces.pas',
+  Controller.Observer.Item in 'Controller.Observer.Item.pas';
 
 {$R *.res}
 

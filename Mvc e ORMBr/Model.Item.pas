@@ -7,6 +7,7 @@ uses
   type
     TModelItem = class(TInterfacedObject, iModelItem)
       private
+        [weak]
         FParent: iModelVenda;
         FCodigo: Integer;
       public
@@ -15,10 +16,13 @@ uses
         class function New(_AModelVenda: iModelVenda): iModelItem;
         function Codigo(_Acodigo: Integer): iModelItem;
         function Vender: iModelItem;
-        function &End: iModelItem;
+        function &End: iModelVenda;
     end;
 
 implementation
+
+uses
+  Controller.Observer.Interfaces;
 
 { TModelItem }
 
@@ -28,7 +32,7 @@ begin
    FCodigo := _Acodigo;
 end;
 
-function TModelItem.&End: iModelItem;
+function TModelItem.&End: iModelVenda;
 begin
    Result := FParent;
 end;
@@ -50,8 +54,16 @@ begin
 end;
 
 function TModelItem.Vender: iModelItem;
+var
+  ARi: TRecordItem;
 begin
    Result := self;
+   case FCodigo of
+    1: ARi.Descricao := 'Arroz Branco';
+    2: ARi.Descricao := 'Feijão Preto';
+    3: Ari.Descricao := 'Macarrão';
+   end;
+   FParent.ObserverItem.Notify(ARi);
 end;
 
 end.

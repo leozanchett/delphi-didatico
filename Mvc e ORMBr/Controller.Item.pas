@@ -4,6 +4,7 @@ interface
 
 uses
   Controller.Interfaces;
+
   type
     TControllerItem = class(TInterfacedObject, iControllerItem)
       private
@@ -21,7 +22,7 @@ uses
         class function New(_AParent: IControllerVenda): iControllerItem;
         function Codigo(_Acodigo: Integer): IControllerItem;
         function Vender: IControllerItem;
-        function &End: IControllerItem;
+        function &End: IControllerVenda;
     end;
 
 implementation
@@ -34,7 +35,7 @@ begin
    Result := self;
 end;
 
-function TControllerItem.&End: IControllerItem;
+function TControllerItem.&End: IControllerVenda;
 begin
   Result := FParent;
 
@@ -61,6 +62,7 @@ end;
 function TControllerItem.Vender: IControllerItem;
 begin
    Result := Self;
+   //FParent.Model.Item.Codigo(FCodigo).Vender;
 end;
 
 end.

@@ -30,11 +30,19 @@ object Form2: TForm2
     end
   end
   object GroupBox1: TGroupBox
-    Left = 392
+    Left = 344
     Top = 16
-    Width = 441
+    Width = 489
     Height = 473
     Caption = 'GroupBox1'
     TabOrder = 1
+    object ListBox1: TListBox
+      Left = 8
+      Top = 16
+      Width = 473
+      Height = 449
+      ItemHeight = 13
+      TabOrder = 0
+    end
   end
 end
