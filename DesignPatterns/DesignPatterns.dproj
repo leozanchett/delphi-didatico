@@ -95,6 +95,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Model\Model.Venda.pas"/>
+        <DCCReference Include="Model\Model.Interfaces.pas"/>
+        <DCCReference Include="Model\Model.Venda.ECF.pas"/>
+        <DCCReference Include="Model\Model.Venda.NFC.pas"/>
+        <DCCReference Include="Model\Model.Venda.SAT.pas"/>
+        <DCCReference Include="Model\Model.Venda.Factory.pas"/>
         <None Include="ModelSupport_DesignPatterns\default.txaPackage"/>
         <None Include="ModelSupport_DesignPatterns\default.txvpck"/>
         <None Include="ModelSupport_DesignPatterns\DesignPatterns\default.txvpck"/>
@@ -122,13 +127,13 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="ModelSupport_DesignPatterns\DesignPatterns\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_DesignPatterns\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_DesignPatterns\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_DesignPatterns\DesignPatterns\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
