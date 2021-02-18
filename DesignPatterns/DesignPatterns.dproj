@@ -100,6 +100,11 @@
         <DCCReference Include="Model\Model.Venda.NFC.pas"/>
         <DCCReference Include="Model\Model.Venda.SAT.pas"/>
         <DCCReference Include="Model\Model.Venda.Factory.pas"/>
+        <DCCReference Include="Model\Model.Venda.Strategy.pas"/>
+        <DCCReference Include="Controller\Controller.Venda.pas"/>
+        <DCCReference Include="Controller\Controller.Interfaces.pas"/>
+        <DCCReference Include="Controller\Controller.Venda.Factory.pas"/>
+        <DCCReference Include="Controller\Controller.Venda.Strategy.pas"/>
         <None Include="ModelSupport_DesignPatterns\default.txaPackage"/>
         <None Include="ModelSupport_DesignPatterns\default.txvpck"/>
         <None Include="ModelSupport_DesignPatterns\DesignPatterns\default.txvpck"/>

@@ -21,15 +21,16 @@ var
 implementation
 
 uses
-  Model.Venda.Factory;
-
+  Controller.Venda.Strategy;
 
 {$R *.dfm}
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   //ShowMessage(FormatCurr('R$ #,##,0.00', TModelVendaECF.New(TModelVendaSat.New(TModelVendaNFC.New(TModelVenda.New))).Subtotal));
-  ShowMessage(FormatCurr('R$ #,##,0.00',TmodelVendaFactory.New.VendaECF(TmodelVendaFactory.New.VendaSat(nil)).Subtotal));
+  //ShowMessage(FormatCurr('R$ #,##,0.00',TmodelVendaFactory.New.VendaECF(TmodelVendaFactory.New.VendaSat(nil)).Subtotal));
+  //ShowMessage(FormatCurr('R$ #,##,0.00',ECF.New(Sat.New(nil)).Subtotal));
+    ShowMessage(FormatCurr('R$ #,##,0.00', Venda.New.Subtotal));
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

@@ -8,7 +8,12 @@ uses
   Model.Venda.ECF in 'Model\Model.Venda.ECF.pas',
   Model.Venda.NFC in 'Model\Model.Venda.NFC.pas',
   Model.Venda.SAT in 'Model\Model.Venda.SAT.pas',
-  Model.Venda.Factory in 'Model\Model.Venda.Factory.pas';
+  Model.Venda.Factory in 'Model\Model.Venda.Factory.pas',
+  Model.Venda.Strategy in 'Model\Model.Venda.Strategy.pas',
+  Controller.Venda in 'Controller\Controller.Venda.pas',
+  Controller.Interfaces in 'Controller\Controller.Interfaces.pas',
+  Controller.Venda.Factory in 'Controller\Controller.Venda.Factory.pas',
+  Controller.Venda.Strategy in 'Controller\Controller.Venda.Strategy.pas';
 
 {$R *.res}
 
