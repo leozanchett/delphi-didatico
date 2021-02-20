@@ -13,7 +13,8 @@ uses
   Controller.Venda in 'Controller\Controller.Venda.pas',
   Controller.Interfaces in 'Controller\Controller.Interfaces.pas',
   Controller.Venda.Factory in 'Controller\Controller.Venda.Factory.pas',
-  Controller.Venda.Strategy in 'Controller\Controller.Venda.Strategy.pas';
+  Controller.Venda.Strategy in 'Controller\Controller.Venda.Strategy.pas',
+  Controller.Eventos in 'Controller\Controller.Eventos.pas';
 
 {$R *.res}
 
