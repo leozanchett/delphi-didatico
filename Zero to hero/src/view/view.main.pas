@@ -20,6 +20,8 @@ type
     spbPrincipal: TSpeedButton;
     procedure rgTemaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure spbUsuariosClick(Sender: TObject);
+    procedure spbPrincipalClick(Sender: TObject);
   private
     procedure MontarTema(_ATipoTema: TTema);
     { Private declarations }
@@ -32,12 +34,15 @@ var
 
 implementation
 
+uses
+  Router4D, view.pages.principal;
 
 {$R *.dfm}
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  MontarTema(tyClaro);
+  MontarTema(tyEscuro);
+  TRouter4D.Render<TpgPrincipal>.SetElement(pnlPrincipal, pnlMain);
 end;
 
 procedure TfrmPrincipal.MontarTema(_ATipoTema: TTema);
@@ -49,6 +54,7 @@ begin
    pnlTop.Color := AEstilos.COLOR_BACKGROUND_TOP;
    pnlLogo.Color := AEstilos.COLOR_BACKGROUND_DESTAK;
    pnlMenu.Color := AEstilos.COLOR_BACKGROUND_MENU;
+   rgTema.Color := pnlPrincipal.Color;
    Font.Color := AEstilos.FONT_COLOR;
    Font.Size := FONT_H6;
 end;
@@ -59,6 +65,16 @@ begin
     0: MontarTema(tyClaro);
     1: MontarTema(tyEscuro);
   end;
+end;
+
+procedure TfrmPrincipal.spbPrincipalClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Principal');
+end;
+
+procedure TfrmPrincipal.spbUsuariosClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Usuarios');
 end;
 
 end.

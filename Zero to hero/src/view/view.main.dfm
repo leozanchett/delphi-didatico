@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'DelphiToHero'
-  ClientHeight = 469
+  ClientHeight = 361
   ClientWidth = 698
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 698
-    Height = 469
+    Height = 361
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
@@ -28,7 +28,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 0
       Width = 89
-      Height = 469
+      Height = 361
       Align = alLeft
       BevelOuter = bvNone
       ParentBackground = False
@@ -41,6 +41,7 @@ object frmPrincipal: TfrmPrincipal
         Align = alTop
         Caption = 'Usuarios'
         Flat = True
+        OnClick = spbUsuariosClick
         ExplicitTop = 57
       end
       object spbPrincipal: TSpeedButton
@@ -51,6 +52,7 @@ object frmPrincipal: TfrmPrincipal
         Align = alTop
         Caption = 'Principal'
         Flat = True
+        OnClick = spbPrincipalClick
         ExplicitTop = 65
       end
       object pnlLogo: TPanel
@@ -67,11 +69,14 @@ object frmPrincipal: TfrmPrincipal
       Left = 89
       Top = 0
       Width = 609
-      Height = 469
+      Height = 361
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
+      DesignSize = (
+        609
+        361)
       object pnlTop: TPanel
         Left = 0
         Top = 0
@@ -81,41 +86,35 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
-        object rgTema: TRadioGroup
-          AlignWithMargins = True
-          Left = 3
-          Top = 3
-          Width = 603
-          Height = 51
-          Align = alClient
-          BiDiMode = bdRightToLeftReadingOnly
-          Caption = 'Tema'
-          Columns = 2
-          ItemIndex = 0
-          Items.Strings = (
-            'Claro'
-            'Escuro')
-          ParentBiDiMode = False
-          ParentBackground = False
-          TabOrder = 0
-          OnClick = rgTemaClick
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 609
-          ExplicitHeight = 57
-        end
       end
       object pnlPrincipal: TPanel
         Left = 0
         Top = 57
         Width = 609
-        Height = 412
+        Height = 304
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 41
-        ExplicitHeight = 428
+      end
+      object rgTema: TRadioGroup
+        AlignWithMargins = True
+        Left = 446
+        Top = 305
+        Width = 158
+        Height = 51
+        Anchors = [akRight, akBottom]
+        BiDiMode = bdRightToLeftReadingOnly
+        Caption = 'Tema'
+        Columns = 2
+        ItemIndex = 1
+        Items.Strings = (
+          'Claro'
+          'Escuro')
+        ParentBiDiMode = False
+        ParentBackground = False
+        TabOrder = 2
+        OnClick = rgTemaClick
       end
     end
   end
