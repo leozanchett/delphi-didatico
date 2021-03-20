@@ -1,0 +1,14 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2021-03-19T23:49:38.9067754-03:00",
+	"installedModules": {
+		"https://github.com/bittencourtthulio/router4delphi": {
+			"name": "router4delphi",
+			"version": "1.0.3",
+			"hash": "3364da831314fe1b4a38cb875dde3374",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}
