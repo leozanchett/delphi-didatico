@@ -6,6 +6,7 @@
 	"mainsrc": "./",
 	"projects": [],
 	"dependencies": {
+		"https://github.com/bittencourtthulio/bind4d": "^1.0.3",
 		"https://github.com/bittencourtthulio/router4delphi": "^1.0.3"
 	}
 }

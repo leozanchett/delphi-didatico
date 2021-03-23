@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'DelphiToHero'
-  ClientHeight = 361
-  ClientWidth = 698
+  ClientHeight = 561
+  ClientWidth = 737
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,21 +18,24 @@ object frmPrincipal: TfrmPrincipal
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 698
-    Height = 361
+    Width = 737
+    Height = 561
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 698
+    ExplicitHeight = 361
     object pnlMenu: TPanel
       Left = 0
       Top = 0
       Width = 89
-      Height = 361
+      Height = 561
       Align = alLeft
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 361
       object spbUsuarios: TSpeedButton
         Left = 0
         Top = 121
@@ -68,39 +71,44 @@ object frmPrincipal: TfrmPrincipal
     object pnlFull: TPanel
       Left = 89
       Top = 0
-      Width = 609
-      Height = 361
+      Width = 648
+      Height = 561
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 609
+      ExplicitHeight = 361
       DesignSize = (
-        609
-        361)
+        648
+        561)
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 609
+        Width = 648
         Height = 57
         Align = alTop
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 609
       end
       object pnlPrincipal: TPanel
         Left = 0
         Top = 57
-        Width = 609
-        Height = 304
+        Width = 648
+        Height = 504
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
+        ExplicitWidth = 609
+        ExplicitHeight = 304
       end
       object rgTema: TRadioGroup
         AlignWithMargins = True
-        Left = 446
-        Top = 305
+        Left = 485
+        Top = 505
         Width = 158
         Height = 51
         Anchors = [akRight, akBottom]
@@ -115,6 +123,8 @@ object frmPrincipal: TfrmPrincipal
         ParentBackground = False
         TabOrder = 2
         OnClick = rgTemaClick
+        ExplicitLeft = 446
+        ExplicitTop = 305
       end
     end
   end

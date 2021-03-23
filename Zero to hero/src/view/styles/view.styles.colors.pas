@@ -25,6 +25,8 @@ type
 
 
 const
+  COLOR_C1 = $00fcfaf9;
+
   FONT_H1 = 22;
   FONT_H2 = 20;
   FONT_H3 = 18;

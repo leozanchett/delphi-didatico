@@ -20,8 +20,8 @@ type
     spbPrincipal: TSpeedButton;
     procedure rgTemaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure spbUsuariosClick(Sender: TObject);
     procedure spbPrincipalClick(Sender: TObject);
+    procedure spbUsuariosClick(Sender: TObject);
   private
     procedure MontarTema(_ATipoTema: TTema);
     { Private declarations }
