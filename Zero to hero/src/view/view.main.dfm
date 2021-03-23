@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   Caption = 'DelphiToHero'
   ClientHeight = 561
-  ClientWidth = 737
+  ClientWidth = 1006
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +18,12 @@ object frmPrincipal: TfrmPrincipal
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 737
+    Width = 1006
     Height = 561
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 698
-    ExplicitHeight = 361
     object pnlMenu: TPanel
       Left = 0
       Top = 0
@@ -35,7 +33,6 @@ object frmPrincipal: TfrmPrincipal
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 361
       object spbUsuarios: TSpeedButton
         Left = 0
         Top = 121
@@ -71,43 +68,38 @@ object frmPrincipal: TfrmPrincipal
     object pnlFull: TPanel
       Left = 89
       Top = 0
-      Width = 648
+      Width = 917
       Height = 561
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 609
-      ExplicitHeight = 361
       DesignSize = (
-        648
+        917
         561)
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 648
+        Width = 917
         Height = 57
         Align = alTop
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 609
       end
       object pnlPrincipal: TPanel
         Left = 0
         Top = 57
-        Width = 648
+        Width = 917
         Height = 504
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 609
-        ExplicitHeight = 304
       end
       object rgTema: TRadioGroup
         AlignWithMargins = True
-        Left = 485
+        Left = 754
         Top = 505
         Width = 158
         Height = 51
@@ -122,9 +114,8 @@ object frmPrincipal: TfrmPrincipal
         ParentBiDiMode = False
         ParentBackground = False
         TabOrder = 2
+        Visible = False
         OnClick = rgTemaClick
-        ExplicitLeft = 446
-        ExplicitTop = 305
       end
     end
   end

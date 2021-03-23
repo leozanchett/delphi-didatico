@@ -8,22 +8,30 @@ inherited pgUsuario: TpgUsuario
       Padding.Right = 100
       ExplicitHeight = 57
       inherited Panel4: TPanel
-        Width = 553
+        Width = 822
         Height = 57
+        ExplicitWidth = 822
+        ExplicitHeight = 57
         inherited Label1: TLabel
           Height = 57
         end
         inherited SpeedButton1: TSpeedButton
-          Left = 413
+          Left = 682
           Height = 57
+          ExplicitLeft = 413
+          ExplicitHeight = 57
         end
         inherited SpeedButton2: TSpeedButton
-          Left = 273
+          Left = 542
           Height = 57
+          ExplicitLeft = 273
+          ExplicitHeight = 57
         end
         inherited SpeedButton3: TSpeedButton
-          Left = 133
+          Left = 402
           Height = 57
+          ExplicitLeft = 133
+          ExplicitHeight = 57
         end
       end
     end
@@ -31,6 +39,8 @@ inherited pgUsuario: TpgUsuario
       Top = 57
       Height = 543
       ParentBackground = False
+      ExplicitTop = 57
+      ExplicitHeight = 543
     end
   end
 end
