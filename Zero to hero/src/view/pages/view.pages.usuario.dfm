@@ -2,8 +2,8 @@ inherited pgUsuario: TpgUsuario
   Caption = 'frmTemplate1'
   PixelsPerInch = 96
   TextHeight = 13
-  inherited Panel1: TPanel
-    inherited Panel2: TPanel
+  inherited pnlMain: TPanel
+    inherited pnlTop: TPanel
       Height = 57
       Padding.Right = 100
       ExplicitHeight = 57
@@ -35,12 +35,14 @@ inherited pgUsuario: TpgUsuario
         end
       end
     end
-    inherited Panel3: TPanel
-      Top = 57
-      Height = 543
-      ParentBackground = False
-      ExplicitTop = 57
-      ExplicitHeight = 543
+    inherited pnlFull: TPanel
+      Top = 60
+      Height = 537
+      ExplicitTop = 60
+      ExplicitHeight = 537
+      inherited pnlFullBody: TPanel
+        Height = 416
+      end
     end
   end
 end

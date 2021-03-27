@@ -2,6 +2,14 @@
 	"hash": "d41d8cd98f00b204e9800998ecf8427e",
 	"updated": "2021-03-19T23:49:38.9067754-03:00",
 	"installedModules": {
+		"github.com/viniciussanchez/dataset-serialize": {
+			"name": "dataset-serialize",
+			"version": "v2.2.9",
+			"hash": "4141c40e2906a59ed5aacd74bbd5499f",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
 		"https://github.com/bittencourtthulio/bind4d": {
 			"name": "bind4d",
 			"version": "1.0.3",
@@ -14,6 +22,14 @@
 			"name": "router4delphi",
 			"version": "1.0.3",
 			"hash": "3364da831314fe1b4a38cb875dde3374",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/viniciussanchez/restrequest4delphi": {
+			"name": "restrequest4delphi",
+			"version": "v3.0.5",
+			"hash": "c4ead963093502712c6af02f86b819d0",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

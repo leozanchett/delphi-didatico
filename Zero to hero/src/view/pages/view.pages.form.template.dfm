@@ -16,7 +16,7 @@ object frmTemplate: TfrmTemplate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object pnlMain: TPanel
     Left = 0
     Top = 0
     Width = 1022
@@ -25,7 +25,7 @@ object frmTemplate: TfrmTemplate
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    object Panel2: TPanel
+    object pnlTop: TPanel
       Left = 0
       Top = 0
       Width = 1022
@@ -119,7 +119,7 @@ object frmTemplate: TfrmTemplate
         end
       end
     end
-    object Panel3: TPanel
+    object pnlFull: TPanel
       AlignWithMargins = True
       Left = 3
       Top = 76
@@ -131,10 +131,6 @@ object frmTemplate: TfrmTemplate
       Padding.Right = 100
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 0
-      ExplicitTop = 73
-      ExplicitWidth = 1022
-      ExplicitHeight = 527
       object Panel5: TPanel
         Left = 100
         Top = 0
@@ -153,7 +149,6 @@ object frmTemplate: TfrmTemplate
           Align = alBottom
           ParentColor = True
           TabOrder = 0
-          ExplicitTop = 48
         end
         object Panel7: TPanel
           Left = 0
@@ -165,10 +160,6 @@ object frmTemplate: TfrmTemplate
           ParentBackground = False
           ParentColor = True
           TabOrder = 1
-          ExplicitLeft = 224
-          ExplicitTop = 32
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object btnAtualizar: TSpeedButton
             Left = 140
             Top = 0
@@ -220,7 +211,6 @@ object frmTemplate: TfrmTemplate
             ParentBackground = False
             ParentColor = True
             TabOrder = 0
-            ExplicitHeight = 88
             object lblPesquisar: TLabel
               Left = 0
               Top = 35
@@ -228,7 +218,7 @@ object frmTemplate: TfrmTemplate
               Height = 13
               Align = alTop
               Caption = 'Pesquisar'
-              ExplicitTop = 28
+              ExplicitWidth = 46
             end
             object Edit1: TEdit
               Left = 0
@@ -237,8 +227,8 @@ object frmTemplate: TfrmTemplate
               Height = 21
               Align = alTop
               BorderStyle = bsNone
+              Color = clBtnFace
               TabOrder = 0
-              ExplicitTop = 41
             end
             object Panel9: TPanel
               Left = 0
@@ -247,15 +237,14 @@ object frmTemplate: TfrmTemplate
               Height = 2
               Align = alTop
               BevelOuter = bvNone
+              Color = clGray
               ParentBackground = False
-              ParentColor = True
               TabOrder = 1
-              ExplicitTop = 54
             end
           end
         end
       end
-      object Panel10: TPanel
+      object pnlFullBody: TPanel
         Left = 100
         Top = 121
         Width = 816
@@ -266,10 +255,6 @@ object frmTemplate: TfrmTemplate
         ParentBackground = False
         ParentColor = True
         TabOrder = 1
-        ExplicitLeft = 384
-        ExplicitTop = 368
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object Panel11: TPanel
           Left = 631
           Top = 0
@@ -280,9 +265,6 @@ object frmTemplate: TfrmTemplate
           ParentBackground = False
           ParentColor = True
           TabOrder = 0
-          ExplicitLeft = 376
-          ExplicitTop = 168
-          ExplicitHeight = 41
         end
         object DBGrid1: TDBGrid
           Left = 0

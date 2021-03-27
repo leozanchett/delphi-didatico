@@ -3,7 +3,7 @@ unit view.styles.colors;
 interface
 
 uses
-  System.UITypes;
+  System.UITypes, Vcl.Graphics;
 
 type
 
@@ -25,7 +25,13 @@ type
 
 
 const
+  COLOR_BACKGROUND = $00ffffff;
+  COLOR_BACKGROUND_TOP = $00b48145;
+  COLOR_BACKGROUND_MENU = $004a4136;
+  COLOR_BACKGROUND_DESTAK = $0084c400;
+
   COLOR_C1 = $00fcfaf9;
+  CINZA = clGrayText;
 
   FONT_H1 = 22;
   FONT_H2 = 20;
@@ -33,6 +39,8 @@ const
   FONT_H4 = 16;
   FONT_H5 = 14;
   FONT_H6 = 12;
+  FONT_COLOR = $00ffffff;
+  FONT_NAME_DEFAULT = 'Segoe UI';
 
 implementation
 
@@ -56,7 +64,6 @@ begin
        AEstilos.COLOR_BACKGROUND := $00322f2d;
        AEstilos.COLOR_BACKGROUND_TOP := $00b48145;
        AEstilos.COLOR_BACKGROUND_MENU := $004a4136;
-       AEstilos.COLOR_BACKGROUND_MENU := $0082aa47;
        AEstilos.FONT_COLOR := $00ffffff;
     end;
   end;
