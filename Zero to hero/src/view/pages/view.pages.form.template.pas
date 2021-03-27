@@ -9,7 +9,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  FireDAC.Stan.StorageBin, view.styles.colors, RESTRequest4D;
+  FireDAC.Stan.StorageBin, view.styles.colors, RESTRequest4D, Vcl.WinXPanels;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -38,9 +38,17 @@ type
     pnlFullBody: TPanel;
     Panel11: TPanel;
     DBGrid1: TDBGrid;
-    FDMemTable1: TFDMemTable;
     DataSource1: TDataSource;
+    FDMemTable1: TFDMemTable;
+    pnlAcoes: TPanel;
+    btnExcluir: TSpeedButton;
+    btnFechar: TSpeedButton;
+    btnSalvar: TSpeedButton;
     procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
     FTitle: String;
@@ -50,6 +58,9 @@ type
     FOrder: String;
     procedure ApplyStyle;
     procedure GetEndPoint;
+    procedure FormatList;
+  protected
+    procedure ToggleDBGrid;
   public
     { Public declarations }
     function Render: TForm;
@@ -72,6 +83,23 @@ begin
   FSort := 'asc';
 end;
 
+procedure TfrmTemplate.btnFecharClick(Sender: TObject);
+begin
+  ToggleDBGrid;
+end;
+
+procedure TfrmTemplate.btnNovoClick(Sender: TObject);
+begin
+  ToggleDBGrid;
+  TBind4D.New.Form(Self).ClearFieldForm;
+end;
+
+procedure TfrmTemplate.DBGrid1DblClick(Sender: TObject);
+begin
+  TBind4D.New.Form(Self).BindDataSetToForm(FDMemTable1);
+  ToggleDBGrid;
+end;
+
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 
 begin
@@ -79,12 +107,18 @@ begin
   ApplyStyle;
 end;
 
+procedure TfrmTemplate.FormResize(Sender: TObject);
+begin
+  GetEndPoint;
+end;
+
 procedure TfrmTemplate.GetEndPoint;
 begin
-   TRequest.New.BaseURL('http://localhost:9000/users')
+   TRequest.New.BaseURL(Concat('http://localhost:9000/', FEndpoint))
     .Accept('application/json')
     .DataSetAdapter(FDMemTable1)
     .Get;
+  FormatList;
 end;
 
 function TfrmTemplate.Render: TForm;
@@ -95,6 +129,16 @@ end;
 procedure TfrmTemplate.UnRender;
 begin
 
+end;
+
+procedure TfrmTemplate.ToggleDBGrid;
+begin
+  DBGrid1.Visible := not DBGrid1.Visible;
+end;
+
+procedure TfrmTemplate.FormatList;
+begin
+  TBind4D.New.Form(Self).BindFormatListDataSet(FDMemTable1, DBGrid1);
 end;
 
 end.
