@@ -127,7 +127,7 @@ begin
       mrNo, mrCancel: Exit;
       mrYes: begin
         FDAO.Delete;
-        IF application.MessageBox('Usuário excluído com sucesso!', 'HutCode', MB_OK + MB_TASKMODAL) = mrOk then
+        if application.MessageBox('Usuário excluído com sucesso!', 'HutCode', MB_OK + MB_TASKMODAL) = mrOk then
           ToggleDBGrid;
       end;
     end;
@@ -137,13 +137,21 @@ begin
 end;
 
 procedure TpgUsuario.btnSalvarClick(Sender: TObject);
-var
-  AJson : TJsonObject;
 begin
   inherited;
   try
-    FDAO.Post;
-    ShowMessage('Usuário adicionado !');
+    case FTypeOperation of
+      toNull: exit;
+      toPost: begin
+        FDAO.Post;
+        ShowMessage('Usuário adicionado !');
+      end;
+      toPut: begin
+        FDAO.Put;
+        ShowMessage('Usuário atualizado !');
+      end;
+    end;
+    FTypeOperation := toNull;
     ToggleDBGrid;
   except on E: exception do
     ShowMessage(E.Message);

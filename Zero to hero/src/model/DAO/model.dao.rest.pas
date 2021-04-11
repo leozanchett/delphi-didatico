@@ -17,6 +17,7 @@ type
       FPK: String;
       FSort: String;
       FOrder: String;
+      FTitle : String;
       function PrepareGuuid(_AGuuid: String): String;
     public
       constructor Create(_AForm: TForm);
@@ -39,9 +40,9 @@ uses
 
 constructor TDAOREST.Create(_AForm: TForm);
 begin
-  FDMemTable := TFDMemTable.Create(_AForm);
+  FDMemTable := TFDMemTable.Create(nil);
   FForm := _AForm;
-  TBind4D.New.Form(FForm).BindFormRest(FEndpoint, FPK, FSort, FOrder);
+  TBind4D.New.Form(FForm).BindFormDefault(FTitle).BindFormRest(FEndpoint, FPK, FSort, FOrder);
 end;
 
 function TDAOREST.DataSet: TDataSet;
@@ -100,8 +101,17 @@ begin
 end;
 
 function TDAOREST.Put: iDAOInterface;
+var
+  AJson: TJSONObject;
 begin
-
+  Result := Self;
+  // transforma o form em um json, utilizando o bind4D
+  AJson := TBind4D.New.Form(FForm).FormToJson(fbPut);
+  try
+    TRequest.New.BaseURL(Concat(BASEURL, FEndpoint, '/', PrepareGuuid(FDMemTable.FieldByName(FPK).AsString))).AcceptEncoding(ACCEPT).AddBody(AJson.ToJSON).Put;
+  finally
+    FreeAndNil(AJson);
+  end;
 end;
 
 

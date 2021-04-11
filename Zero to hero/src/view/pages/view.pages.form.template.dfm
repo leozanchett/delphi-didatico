@@ -4,8 +4,8 @@ object frmTemplate: TfrmTemplate
   Align = alClient
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 600
-  ClientWidth = 1022
+  ClientHeight = 632
+  ClientWidth = 1040
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,31 +20,35 @@ object frmTemplate: TfrmTemplate
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1022
-    Height = 600
+    Width = 1040
+    Height = 632
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1022
+    ExplicitHeight = 600
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 1022
+      Width = 1040
       Height = 73
       Align = alTop
       BevelOuter = bvNone
       Padding.Left = 100
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1022
       object Panel4: TPanel
         Left = 100
         Top = 0
-        Width = 922
+        Width = 940
         Height = 73
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 922
         object Label1: TLabel
           Left = 0
           Top = 0
@@ -62,7 +66,7 @@ object frmTemplate: TfrmTemplate
           ExplicitHeight = 13
         end
         object SpeedButton1: TSpeedButton
-          Left = 782
+          Left = 800
           Top = 0
           Width = 140
           Height = 73
@@ -79,7 +83,7 @@ object frmTemplate: TfrmTemplate
           ExplicitLeft = 428
         end
         object SpeedButton2: TSpeedButton
-          Left = 642
+          Left = 660
           Top = 0
           Width = 140
           Height = 73
@@ -96,7 +100,7 @@ object frmTemplate: TfrmTemplate
           ExplicitLeft = 428
         end
         object SpeedButton3: TSpeedButton
-          Left = 502
+          Left = 520
           Top = 0
           Width = 140
           Height = 73
@@ -119,43 +123,48 @@ object frmTemplate: TfrmTemplate
       AlignWithMargins = True
       Left = 3
       Top = 76
-      Width = 1016
-      Height = 521
+      Width = 1034
+      Height = 553
       Align = alClient
       BevelOuter = bvNone
       Padding.Left = 100
       Padding.Right = 100
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 1016
+      ExplicitHeight = 521
       object Panel5: TPanel
         Left = 100
         Top = 0
-        Width = 816
+        Width = 834
         Height = 121
         Align = alTop
         BevelOuter = bvNone
         ParentBackground = False
         ParentColor = True
         TabOrder = 0
+        ExplicitWidth = 816
         object Panel6: TPanel
           Left = 0
           Top = 120
-          Width = 816
+          Width = 834
           Height = 1
           Align = alBottom
           ParentColor = True
           TabOrder = 0
+          ExplicitWidth = 816
         end
         object Panel7: TPanel
           Left = 0
           Top = 0
-          Width = 816
+          Width = 834
           Height = 120
           Align = alClient
           BevelOuter = bvNone
           ParentBackground = False
           ParentColor = True
           TabOrder = 1
+          ExplicitWidth = 816
           object btnAtualizar: TSpeedButton
             Left = 140
             Top = 0
@@ -194,7 +203,7 @@ object frmTemplate: TfrmTemplate
             ExplicitHeight = 73
           end
           object Panel8: TPanel
-            Left = 408
+            Left = 426
             Top = 0
             Width = 408
             Height = 120
@@ -204,6 +213,7 @@ object frmTemplate: TfrmTemplate
             ParentBackground = False
             ParentColor = True
             TabOrder = 0
+            ExplicitLeft = 408
             object lblPesquisar: TLabel
               Left = 0
               Top = 35
@@ -240,32 +250,38 @@ object frmTemplate: TfrmTemplate
       object pnlFullBody: TPanel
         Left = 100
         Top = 121
-        Width = 816
-        Height = 400
+        Width = 834
+        Height = 432
         Align = alClient
         BevelOuter = bvNone
         Padding.Bottom = 30
         ParentBackground = False
         ParentColor = True
         TabOrder = 1
+        ExplicitWidth = 816
+        ExplicitHeight = 400
         object Panel11: TPanel
           Left = 0
           Top = 0
-          Width = 816
-          Height = 370
+          Width = 834
+          Height = 402
           Align = alClient
           BevelOuter = bvNone
           ParentBackground = False
           ParentColor = True
           TabOrder = 0
+          ExplicitWidth = 816
+          ExplicitHeight = 370
           object pnlAcoes: TPanel
             Left = 0
-            Top = 329
-            Width = 816
+            Top = 361
+            Width = 834
             Height = 41
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitTop = 200
+            ExplicitWidth = 816
             object btnExcluir: TSpeedButton
               Left = 0
               Top = 0
@@ -275,7 +291,7 @@ object frmTemplate: TfrmTemplate
               Caption = 'Excluir'
             end
             object btnFechar: TSpeedButton
-              Left = 752
+              Left = 770
               Top = 0
               Width = 64
               Height = 41
@@ -285,7 +301,7 @@ object frmTemplate: TfrmTemplate
               ExplicitLeft = 344
             end
             object btnSalvar: TSpeedButton
-              Left = 688
+              Left = 706
               Top = 0
               Width = 64
               Height = 41
@@ -298,8 +314,8 @@ object frmTemplate: TfrmTemplate
         object DBGrid1: TDBGrid
           Left = 0
           Top = 0
-          Width = 816
-          Height = 370
+          Width = 834
+          Height = 402
           Align = alClient
           BorderStyle = bsNone
           DataSource = DataSource1

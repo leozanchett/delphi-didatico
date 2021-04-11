@@ -10,6 +10,8 @@ uses
   model.dao.interfaces;
 
 type
+  TTypeOperation = (toNull, toPost, toPut);
+
   TfrmTemplate = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H6, CINZA, FONT_NAME_DEFAULT)]
     pnlMain: TPanel;
@@ -57,7 +59,8 @@ type
     procedure GetEndPoint;
     procedure FormatList;
   protected
-     FDAO: iDAOInterface;
+    FDAO: iDAOInterface;
+    FTypeOperation : TTypeOperation;
     procedure ToggleDBGrid;
   public
     { Public declarations }
@@ -90,12 +93,14 @@ end;
 
 procedure TfrmTemplate.btnNovoClick(Sender: TObject);
 begin
+  FTypeOperation := toPost;
   ToggleDBGrid;
   TBind4D.New.Form(Self).ClearFieldForm;
 end;
 
 procedure TfrmTemplate.DBGrid1DblClick(Sender: TObject);
 begin
+  FTypeOperation := toPut;
   TBind4D.New.Form(Self).BindDataSetToForm(FDAO.DataSet);
   ToggleDBGrid;
 end;
@@ -103,8 +108,9 @@ end;
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 
 begin
+  FTypeOperation := toNull;
   FDAO := TDAOREST.New(Self).DataSource(DataSource1);
-  TBind4D.New.Form(self).BindFormDefault(FTitle).BindFormRest(FEndpoint, FPK, FSort, FSort).SetStyleComponents;
+  TBind4D.New.Form(self).BindFormDefault(FTitle).BindFormRest(FEndpoint, FPK, FSort, FOrder).SetStyleComponents;
   ApplyStyle;
   GetEndPoint;
 end;
