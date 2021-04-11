@@ -9,7 +9,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.StorageBin, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids,
-  Vcl.DBGrids, Vcl.WinXPanels, view.styles.colors, Vcl.ComCtrls;
+  Vcl.DBGrids, Vcl.WinXPanels, view.styles.colors, Vcl.ComCtrls,
+  Bind4D.Attributes, Bind4D.Types;
 
 type
   [FormRest('/users','guuid','name', 'asc')]
@@ -126,10 +127,8 @@ begin
     case application.MessageBox(PCHAR(concat('Confirma a exclusão do usuário ', AJson.FindValue('name').ToJSON, ' ?')), 'HutCode', MB_yesno + MB_ICONINFORMATION) of
       mrNo, mrCancel: Exit;
       mrYes: begin
-        TRequest.New.BaseURL('http://localhost:9000/users/')
-        .Accept('application/json')
-        .AddParam('id', AJson.FindValue('codigo').ToJSON)
-        .Delete;
+        FDAO.DataSet.FieldByName('guuid').AsString;
+        //FDAO.Delete;
         IF application.MessageBox('Usuário excluído com sucesso!', 'HutCode', MB_OK + MB_TASKMODAL) = mrOk then
           ToggleDBGrid;
       end;

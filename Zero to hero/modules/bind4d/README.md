@@ -1,15 +1,51 @@
+<p align="center">
+  <a href="https://github.com/bittencourtthulio/Bind4D/blob/main/assets/logo-bind4d.jpg">
+    <img alt="bind4d" src="https://github.com/bittencourtthulio/Bind4D/blob/main/assets/logo-bind4d.jpg">
+  </a>  
+</p><br>
+
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/bittencourtthulio/Bind4D?style=flat-square">
+  <img src="https://img.shields.io/github/stars/bittencourtthulio/Bind4D?style=flat-square">
+  <img src="https://img.shields.io/github/contributors/bittencourtthulio/Bind4D?color=orange&style=flat-square">
+  <img src="https://img.shields.io/github/forks/bittencourtthulio/Bind4D?style=flat-square">
+   <img src="https://tokei.rs/b1/github/bittencourtthulio/Bind4D?color=red&category=lines">
+  <img src="https://tokei.rs/b1/github/bittencourtthulio/Bind4D?color=green&category=code">
+  <img src="https://tokei.rs/b1/github/bittencourtthulio/Bind4D?color=yellow&category=files">
+</p>
+
 # Bind4D
 Framework para realização de Bind via notação de Atributos nos componentes do formulário.
 
 O Bind4D tem o objetivo de facilitar a transição de dados entre a camada de visão e as demais camadas do seu sistema, realizando de forma automatica mediante notação a conversão dos dados de um formulário para JSON, atribuindo estilos a componentes, realizando validação de campos, configuração de exibição de dados do dataset em um DbGrid e muito mais.
 
+<br>
+
+
 ## Instalação
 
-Basta registrar no Library Path do seu Delphi o caminho da pasta SRC da Biblioteca ou utilizar o Boss (https://github.com/HashLoad/boss) para facilitar ainda mais, executando o comando boss install https://github.com/bittencourtthulio/Bind4D
+Basta registrar no Library Path do seu Delphi o caminho da pasta SRC da Biblioteca ou utilizar o Boss (https://github.com/HashLoad/boss) para facilitar ainda mais, executando o comando 
+
+```
+boss install https://github.com/bittencourtthulio/Bind4D
+```
+
+*Pré-Requisitos*:<br> 
+
+[**aws4d**](https://github.com/bittencourtthulio/aws4d) - Biblioteca para Envio de Arquivos para a AWS S3 <br>
+[**localcache4d**](https://github.com/bittencourtthulio/localcache4d) - Mini Banco de Dados Chave-Valor para Cache local <br>
+[**translator4d**](https://github.com/bittencourtthulio/translator4d) - Biblioteca para Tradução com Google API <br>
+[**restrequest4delphi**](https://github.com/viniciussanchez/restrequest4delphi) - Biblioteca para Requisições REST <br>
 
 ## Primeiros Passos - Tutorial
 
-Para utilizar o Bind4D você deve adicionar a uses Bind4D.
+Para utilizar o Bind4D você deve adicionar as uses:
+
+```
+Bind4D,
+Bind4D.Attributes,
+Bind4D.Types;
+```
 
 ## Atributos do Formulário
 
@@ -21,10 +57,10 @@ O atributo FormRest permite que você deixe configurado a qual endpoint rest as 
 
 Os parametros deste atributo são:
 
-EndPoint = EndPoint da requisição rest;
-Key = Chave das Requisições para Put e Delete;
-Sort = Campos default da ordenação do Get podendo ser passado mais de um campo separado por virgula
-Order = Ordem da Listagem asc ou desc;
+<b>EndPoint</b> = EndPoint da requisição rest;<br>
+<b>Key</b> = Chave das Requisições para Put e Delete;<br>
+<b>Sort</b> = Campos default da ordenação do Get podendo ser passado mais de um campo separado por virgula;<br>
+<b>Order</b> = Ordem da Listagem asc ou desc;<br>
 
 Exemplo
 
@@ -50,7 +86,7 @@ O atributo FormDefault permite que você deixe configurado o Titulo para o Formu
 
 Os parametros destre atributo são:
 
-Title = Titulo do Formulários
+<b>Title</b> = Titulo do Formulários<br>
 
 Exemplo
 
@@ -73,7 +109,7 @@ O atributo FieldJsonBind permite que você deixe configurado a qual Field do Jso
 
 Os parametros destre atributo são:
 
-FieldName = Nome do Campo que você deseja que ele se transforme no JSON
+<b>FieldName</b> = Nome do Campo que você deseja que ele se transforme no JSON<br>
 
 Exemplo
 
@@ -86,10 +122,10 @@ Você ainda pode passar alguns atributos especiais para determinar em quais tipo
 
 Os atributos especiais são:
 
-FbIgnorePut = O campo será ignorado se o parametro de Put for enviado na hora do bind para json
-FbIgnorePost = O campo será ignorado se o parametro de Post for enviado na hora do bind para json
-FbIgnoreDelete = O campo será ignorado se o parametro de Delete for enviado na hora do bind para json
-FbIgnoreGet = O campo será ignorado se o parametro de Put Get enviado na hora do bind para json
+<b>FbIgnorePut</b> = O campo será ignorado se o parametro de Put for enviado na hora do bind para json<br>
+<b>FbIgnorePost</b> = O campo será ignorado se o parametro de Post for enviado na hora do bind para json<br>
+<b>FbIgnoreDelete</b> = O campo será ignorado se o parametro de Delete for enviado na hora do bind para json<br>
+<b>FbIgnoreGet</b> = O campo será ignorado se o parametro de Put Get enviado na hora do bind para json<br>
 
 Exemplo
 
@@ -98,13 +134,13 @@ Exemplo
 edtCodigo: TEdit;
 ```
 
-##### Converter o Formulário para JSON
+### Converter o Formulário para JSON
 
 Uma vez tendo configurado todos os componentes desejados com o atributo FieldJsonBind, basta executar o comando abaixo passando qual o tipo de json você quer gerar para obter o Json com os valores presentes nos componentes.
 
 Os Parametros deste atributo são:
 
-fbGet, fbPost, fbPut, fbDelete
+<b>fbGet, fbPost, fbPut, fbDelete</b><br>
 
 ```delphi
 var
@@ -124,21 +160,21 @@ O atributo ComponentBindStyle permite que você determine as configurações vis
 
 Os parametros destre atributo são:
 
-COLOR = Cor do componentes
-FONTSIZE = Tamanho da Fonte do Componente
-FONTCOLOR = Cor da Fonte do Componente
-FONTNAME =  Nome da Fonte do Componente
-ESPECIALTYPE = Tipo Especial usado para formatação.
+<b>COLOR</b> = Cor do componentes<br>
+<b>FONTSIZE</b> = Tamanho da Fonte do Componente<br>
+<b>FONTCOLOR</b> = Cor da Fonte do Componente<br>
+<b>FONTNAME</b> =  Nome da Fonte do Componente<br>
+<b>ESPECIALTYPE</b> = Tipo Especial usado para formatação.<br>
 
 Os Tipos especiais de formatação disponíveis são:
 
-teNull = Não aplica nenhuma configuração
-teCoin = Formatação para Moeda
-teCell = Formatação para Número de Celular com 9 digitos
-teDate = Formatação para Data
-teDateTime = Formatação para Data e Hora
-teCPF = Formatação para CPF 
-teCNPJ = Formatação para CNPJ
+<b>teNull</b> = Não aplica nenhuma configuração<br>
+<b>teCoin</b> = Formatação para Moeda<br>
+<b>teCell</b> = Formatação para Número de Celular com 9 digitos<br>
+<b>teDate</b> = Formatação para Data<br>
+<b>teDateTime</b> = Formatação para Data e Hora<br>
+<b>teCPF</b> = Formatação para CPF<br> 
+<b>teCNPJ</b> = Formatação para CNPJ<br>
 
 Exemplo
 
@@ -156,23 +192,24 @@ TBind4D.New.Form(Self).SetStyleComponents;
 ```
 
 
-####  [FieldDataSetBind(Field, Type, Visible, DisplayWidh_Percent, DisplayName, MaskEdit, Alignment)]
+####  [FieldDataSetBind(Field, Type, Visible, DisplayWidh_Percent, DisplayName, MaskEdit, Alignment, LimitWidth)]
 
 O atributo FieldDataSetBind permite você configurar o componente tanto para sua exibição no DBGrid quanto para o Bind automatico entre o DataSet e o Componente na Tela
 
 Os parametros destre atributo são:
 
-Key = Nome do Field no DataSet
-Type = Tipo de Dado do Campo
-DisplayWidh_Percent = Tamanho da Coluna no DBGrid em Porcentagem
-DisplayName =  Nome da Coluna a ser Exibido no DBGrid
-MaskEdit = Mascara para exibição do valor
-Alignment = Posicionamento na Exibição no DBGrid 
+<b>Key</b> = Nome do Field no DataSet<br>
+<b>Type</b> = Tipo de Dado do Campo<br>
+<b>DisplayWidh_Percent</b> = Tamanho da Coluna no DBGrid em Porcentagem<br>
+<b>DisplayName</b> =  Nome da Coluna a ser Exibido no DBGrid<br>
+<b>MaskEdit</b> = Mascara para exibição do valor<br>
+<b>Alignment</b> = Posicionamento na Exibição no DBGrid<br>
+<b>LimitWidth</b> = Determina qual o tamanho limite de exibição da Coluna no DBGrid, se o formulario for menor que o tamanho informado a coluna é automaticamente oculta<br>
 
 Exemplo
 
 ```delphi
-[FieldDataSetBind('balance', ftCurrency, True, 8, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
+[FieldDataSetBind('balance', ftCurrency, True, 8, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify, 600)]
 edtSaldo: TEdit;
 ```
 
@@ -198,7 +235,7 @@ O atributo fvNotNull valida automaticamente se o valor no componente é nulo e a
 
 Os parametros destre atributo são:
 
-Message = Mensagem de Erro apresentada 
+<b>Message</b> = Mensagem de Erro apresentada<br> 
 
 Exemplo
 
@@ -208,3 +245,44 @@ edtName: TEdit;
 ```
 
 
+## Tradução com Google API Translator
+
+O Bind4D executa a tradução automática dos componentes utilizando o framework Translator4D (https://github.com/bittencourtthulio/translator4d). 
+
+Para realizar a tradução é necessário configurar préviamente o Bind4D com os parametros do Google API.
+
+```delphi
+TBind4D
+    .New
+      .Translator
+        .Google
+          .Credential
+            .Key('SUA APIKEY DO GOOGLE API TRANSLATOR')
+          .&End
+          .Options
+            .Cache(True) //Permite que o Bind4d faça o cache automatico das traduções para não refazer as consultas que ele já fez.
+          .&End
+          .Params
+            .Source(TranslateSource) //Código da Linguagem origem que você está usando
+            .Target(TranslateTarget); //Código da Linguagem de destino que você deseja traduzir.
+```
+
+Os código das linguagem do Google você pode ver aqui: 
+https://cloud.google.com/translate/docs/languages?hl=pt-br
+
+
+O Bind4D trabalha com o padrão Singleton, sendo assim você pode realizar essa configuração a qualquer momento no seu sistema, com a configuração feita você pode adicionar os atributos de tradução nos seus componentes.
+
+```delphi
+[Translation('Nome')]
+Label1: TLabel;
+```
+
+Dessa forma ao chamar o método abaixo ele automaticamente atribuirá a tradução da palavra "Nome" no idioma que você configurou no Target ao Label1.
+
+```delphi
+ TBind4D
+    .New
+      .Form(Self)
+      .SetStyleComponents;
+```

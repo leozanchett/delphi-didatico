@@ -1,4 +1,4 @@
-package Bind4D;
+package AWS4D;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -30,13 +30,14 @@ package Bind4D;
 requires
   rtl,
   vcl,
-  vclwinx,
-  dbrtl,
-  vcldb;
+  xmlrtl;
 
 contains
-  Bind4D in '..\src\Bind4D.pas',
-  Bind4D.Utils in '..\src\Bind4D.Utils.pas',
-  Bind4D.ChangeCommand in '..\src\Bind4D.ChangeCommand.pas';
+  AWS4D.Interfaces in 'src\AWS4D.Interfaces.pas',
+  AWS4D in 'src\AWS4D.pas',
+  AWS4D.S3.Credencial in 'src\AWS4D.S3.Credencial.pas',
+  AWS4D.S3.Get in 'src\AWS4D.S3.Get.pas',
+  AWS4D.S3 in 'src\AWS4D.S3.pas',
+  AWS4D.S3.Send in 'src\AWS4D.S3.Send.pas';
 
 end.

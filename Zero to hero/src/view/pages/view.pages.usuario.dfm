@@ -38,8 +38,7 @@ inherited pgUsuario: TpgUsuario
     inherited pnlFull: TPanel
       Top = 60
       Height = 537
-      ExplicitLeft = -109
-      ExplicitTop = 63
+      ExplicitTop = 60
       ExplicitHeight = 537
       inherited Panel5: TPanel
         inherited Panel7: TPanel
@@ -50,18 +49,13 @@ inherited pgUsuario: TpgUsuario
       end
       inherited pnlFullBody: TPanel
         Height = 416
-        ExplicitWidth = 269
         ExplicitHeight = 416
         inherited Panel11: TPanel
           Height = 386
-          ExplicitLeft = 0
-          ExplicitWidth = 816
           ExplicitHeight = 386
           inherited pnlAcoes: TPanel
             Top = 345
-            ExplicitLeft = 0
             ExplicitTop = 345
-            ExplicitWidth = 816
             inherited btnExcluir: TSpeedButton
               OnClick = btnExcluirClick
             end
@@ -203,9 +197,6 @@ inherited pgUsuario: TpgUsuario
             Padding.Left = 10
             Spacing = 5
             TabOrder = 2
-            ExplicitLeft = 731
-            ExplicitTop = 121
-            ExplicitHeight = 416
             object Label6: TLabel
               Left = 10
               Top = 0
@@ -292,11 +283,7 @@ inherited pgUsuario: TpgUsuario
     end
   end
   inherited DataSource1: TDataSource
-    Left = 910
-    Top = 517
-  end
-  inherited FDMemTable1: TFDMemTable
-    Left = 942
-    Top = 469
+    Left = 694
+    Top = 285
   end
 end

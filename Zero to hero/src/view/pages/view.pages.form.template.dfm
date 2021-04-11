@@ -68,8 +68,6 @@ object frmTemplate: TfrmTemplate
           Height = 73
           Align = alRight
           Caption = 'CONFIGURA'#199#213'ES'
-          ImageIndex = 2
-          Images = ImageList1
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -87,8 +85,6 @@ object frmTemplate: TfrmTemplate
           Height = 73
           Align = alRight
           Caption = 'HIST'#211'RICO'
-          ImageIndex = 1
-          Images = ImageList1
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -105,9 +101,8 @@ object frmTemplate: TfrmTemplate
           Width = 140
           Height = 73
           Align = alRight
+          GroupIndex = 1
           Caption = 'RELAT'#211'RIOS'
-          ImageIndex = 0
-          Images = ImageList1
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -168,8 +163,6 @@ object frmTemplate: TfrmTemplate
             Height = 120
             Align = alLeft
             Caption = 'Atualizar'
-            ImageIndex = 2
-            Images = ImageList1
             Flat = True
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -188,8 +181,6 @@ object frmTemplate: TfrmTemplate
             Height = 120
             Align = alLeft
             Caption = 'NOVO'
-            ImageIndex = 2
-            Images = ImageList1
             Flat = True
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -257,7 +248,6 @@ object frmTemplate: TfrmTemplate
         ParentBackground = False
         ParentColor = True
         TabOrder = 1
-        ExplicitWidth = 517
         object Panel11: TPanel
           Left = 0
           Top = 0
@@ -268,8 +258,6 @@ object frmTemplate: TfrmTemplate
           ParentBackground = False
           ParentColor = True
           TabOrder = 0
-          ExplicitLeft = 408
-          ExplicitWidth = 408
           object pnlAcoes: TPanel
             Left = 0
             Top = 329
@@ -278,9 +266,6 @@ object frmTemplate: TfrmTemplate
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitLeft = 104
-            ExplicitTop = 208
-            ExplicitWidth = 185
             object btnExcluir: TSpeedButton
               Left = 0
               Top = 0
@@ -876,19 +861,7 @@ object frmTemplate: TfrmTemplate
       000000000000}
   end
   object DataSource1: TDataSource
-    DataSet = FDMemTable1
     Left = 798
-    Top = 445
-  end
-  object FDMemTable1: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 878
     Top = 445
   end
 end

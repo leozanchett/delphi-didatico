@@ -6,10 +6,8 @@ uses
   Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Router4D.Interfaces,
   Vcl.StdCtrls, Vcl.Buttons, System.ImageList, Vcl.ImgList, Bind4D, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  FireDAC.Stan.StorageBin, view.styles.colors, RESTRequest4D, Vcl.WinXPanels;
+  Vcl.Grids, Vcl.DBGrids, view.styles.colors, RESTRequest4D, Vcl.WinXPanels,
+  model.dao.interfaces;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -39,7 +37,6 @@ type
     Panel11: TPanel;
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
-    FDMemTable1: TFDMemTable;
     pnlAcoes: TPanel;
     btnExcluir: TSpeedButton;
     btnFechar: TSpeedButton;
@@ -60,6 +57,7 @@ type
     procedure GetEndPoint;
     procedure FormatList;
   protected
+     FDAO: iDAOInterface;
     procedure ToggleDBGrid;
   public
     { Public declarations }
@@ -73,6 +71,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses model.dao.rest;
 
 { TForm1 }
 
@@ -96,15 +96,17 @@ end;
 
 procedure TfrmTemplate.DBGrid1DblClick(Sender: TObject);
 begin
-  TBind4D.New.Form(Self).BindDataSetToForm(FDMemTable1);
+  TBind4D.New.Form(Self).BindDataSetToForm(FDAO.DataSet);
   ToggleDBGrid;
 end;
 
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 
 begin
+  FDAO := TDAOREST.New(Self).DataSource(DataSource1);
   TBind4D.New.Form(self).BindFormDefault(FTitle).BindFormRest(FEndpoint, FPK, FSort, FSort).SetStyleComponents;
   ApplyStyle;
+  GetEndPoint;
 end;
 
 procedure TfrmTemplate.FormResize(Sender: TObject);
@@ -114,10 +116,7 @@ end;
 
 procedure TfrmTemplate.GetEndPoint;
 begin
-   TRequest.New.BaseURL(Concat('http://localhost:9000/', FEndpoint))
-    .Accept('application/json')
-    .DataSetAdapter(FDMemTable1)
-    .Get;
+  FDAO.Get;
   FormatList;
 end;
 
@@ -133,12 +132,13 @@ end;
 
 procedure TfrmTemplate.ToggleDBGrid;
 begin
+  GetEndPoint;
   DBGrid1.Visible := not DBGrid1.Visible;
 end;
 
 procedure TfrmTemplate.FormatList;
 begin
-  TBind4D.New.Form(Self).BindFormatListDataSet(FDMemTable1, DBGrid1);
+  TBind4D.New.Form(Self).BindFormatListDataSet(FDAO.DataSet, DBGrid1);
 end;
 
 end.

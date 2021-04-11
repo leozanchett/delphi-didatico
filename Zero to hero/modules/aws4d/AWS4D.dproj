@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{AB0883BA-6C30-46A6-8A4C-B416343FC049}</ProjectGuid>
-        <MainSource>Bind4D.dpk</MainSource>
+        <ProjectGuid>{4F9B1424-B4EE-4B7D-8EA0-31D9FB2DD1A1}</ProjectGuid>
+        <MainSource>AWS4D.dpk</MainSource>
         <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
@@ -46,7 +46,7 @@
         <GenPackage>true</GenPackage>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <SanitizedProjectName>Bind4D</SanitizedProjectName>
+        <SanitizedProjectName>AWS4D</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -78,12 +78,13 @@
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
-        <DCCReference Include="vclwinx.dcp"/>
-        <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="vcldb.dcp"/>
-        <DCCReference Include="..\src\Bind4D.pas"/>
-        <DCCReference Include="..\src\Bind4D.Utils.pas"/>
-        <DCCReference Include="..\src\Bind4D.ChangeCommand.pas"/>
+        <DCCReference Include="xmlrtl.dcp"/>
+        <DCCReference Include="src\AWS4D.Interfaces.pas"/>
+        <DCCReference Include="src\AWS4D.pas"/>
+        <DCCReference Include="src\AWS4D.S3.Credencial.pas"/>
+        <DCCReference Include="src\AWS4D.S3.Get.pas"/>
+        <DCCReference Include="src\AWS4D.S3.pas"/>
+        <DCCReference Include="src\AWS4D.S3.Send.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -102,7 +103,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">Bind4D.dpk</Source>
+                    <Source Name="MainSource">AWS4D.dpk</Source>
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
@@ -121,9 +122,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\Bind4D.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\AWS4D.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Bind4D.bpl</RemoteName>
+                        <RemoteName>AWS4D.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
