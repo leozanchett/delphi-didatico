@@ -121,14 +121,12 @@ var
   AJson : TJsonObject;
 begin
   inherited;
-
   AJson := TBind4D.New.Form(self).FormToJson(fbDelete);
   try
     case application.MessageBox(PCHAR(concat('Confirma a exclusão do usuário ', AJson.FindValue('name').ToJSON, ' ?')), 'HutCode', MB_yesno + MB_ICONINFORMATION) of
       mrNo, mrCancel: Exit;
       mrYes: begin
-        FDAO.DataSet.FieldByName('guuid').AsString;
-        //FDAO.Delete;
+        FDAO.Delete;
         IF application.MessageBox('Usuário excluído com sucesso!', 'HutCode', MB_OK + MB_TASKMODAL) = mrOk then
           ToggleDBGrid;
       end;
@@ -143,16 +141,12 @@ var
   AJson : TJsonObject;
 begin
   inherited;
-  AJson := TBind4D.New.Form(self).FormToJson(fbPost);
   try
-    TRequest.New.BaseURL('http://localhost:9000/users')
-    .Accept('application/json')
-    .AddBody(AJson.ToString)
-    .Post;
+    FDAO.Post;
     ShowMessage('Usuário adicionado !');
     ToggleDBGrid;
-  finally
-     AJson.Free;
+  except on E: exception do
+    ShowMessage(E.Message);
   end;
 end;
 

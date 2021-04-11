@@ -33,7 +33,7 @@ type
 implementation
 
 uses
-  RESTRequest4D, Bind4D, System.SysUtils;
+  RESTRequest4D, Bind4D, System.SysUtils, System.JSON, Bind4D.Types;
 
 { TDAOREST }
 
@@ -81,8 +81,17 @@ begin
 end;
 
 function TDAOREST.Post: iDAOInterface;
+var
+  AJson: TJSONObject;
 begin
-
+  Result := Self;
+  // transforma o form em um json, utilizando o bind4D
+  AJson := TBind4D.New.Form(FForm).FormToJson(fbPost);
+  try
+    TRequest.New.BaseURL(Concat(BASEURL, FEndpoint)).AcceptEncoding(ACCEPT).AddBody(AJson.ToJSON).Post;
+  finally
+    FreeAndNil(AJson);
+  end;
 end;
 
 function TDAOREST.PrepareGuuid(_AGuuid: String): String;
@@ -94,5 +103,6 @@ function TDAOREST.Put: iDAOInterface;
 begin
 
 end;
+
 
 end.

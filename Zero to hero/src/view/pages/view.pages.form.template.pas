@@ -72,7 +72,7 @@ implementation
 
 {$R *.dfm}
 
-uses model.dao.rest;
+uses model.dao.rest, System.StrUtils;
 
 { TForm1 }
 
@@ -134,6 +134,8 @@ procedure TfrmTemplate.ToggleDBGrid;
 begin
   GetEndPoint;
   DBGrid1.Visible := not DBGrid1.Visible;
+  btnNovo.Caption := IfThen(DBGrid1.Visible, 'Novo', 'Voltar');
+  btnAtualizar.Visible := DBGrid1.Visible;
 end;
 
 procedure TfrmTemplate.FormatList;

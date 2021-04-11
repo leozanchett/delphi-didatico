@@ -1,14 +1,21 @@
 inherited pgUsuario: TpgUsuario
   Caption = 'frmTemplate1'
+  ClientHeight = 620
+  ClientWidth = 1048
+  ExplicitWidth = 1048
+  ExplicitHeight = 620
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMain: TPanel
+    Width = 1048
+    Height = 620
     inherited pnlTop: TPanel
+      Width = 1048
       Height = 57
       Padding.Right = 100
       ExplicitHeight = 57
       inherited Panel4: TPanel
-        Width = 822
+        Width = 848
         Height = 57
         ExplicitWidth = 822
         ExplicitHeight = 57
@@ -16,19 +23,19 @@ inherited pgUsuario: TpgUsuario
           Height = 57
         end
         inherited SpeedButton1: TSpeedButton
-          Left = 682
+          Left = 708
           Height = 57
           ExplicitLeft = 413
           ExplicitHeight = 57
         end
         inherited SpeedButton2: TSpeedButton
-          Left = 542
+          Left = 568
           Height = 57
           ExplicitLeft = 273
           ExplicitHeight = 57
         end
         inherited SpeedButton3: TSpeedButton
-          Left = 402
+          Left = 428
           Height = 57
           ExplicitLeft = 133
           ExplicitHeight = 57
@@ -37,29 +44,45 @@ inherited pgUsuario: TpgUsuario
     end
     inherited pnlFull: TPanel
       Top = 60
-      Height = 537
+      Width = 1042
+      Height = 557
       ExplicitTop = 60
       ExplicitHeight = 537
       inherited Panel5: TPanel
+        Width = 842
+        inherited Panel6: TPanel
+          Width = 842
+        end
         inherited Panel7: TPanel
+          Width = 842
           inherited btnAtualizar: TSpeedButton
             OnClick = btnAtualizarClick
+          end
+          inherited Panel8: TPanel
+            Left = 434
           end
         end
       end
       inherited pnlFullBody: TPanel
-        Height = 416
+        Width = 842
+        Height = 436
         ExplicitHeight = 416
         inherited Panel11: TPanel
-          Height = 386
+          Width = 842
+          Height = 406
           ExplicitHeight = 386
           inherited pnlAcoes: TPanel
-            Top = 345
+            Top = 365
+            Width = 842
             ExplicitTop = 345
             inherited btnExcluir: TSpeedButton
               OnClick = btnExcluirClick
             end
+            inherited btnFechar: TSpeedButton
+              Left = 778
+            end
             inherited btnSalvar: TSpeedButton
+              Left = 714
               OnClick = btnSalvarClick
             end
           end
@@ -67,7 +90,7 @@ inherited pgUsuario: TpgUsuario
             Left = 0
             Top = 0
             Width = 385
-            Height = 345
+            Height = 365
             Align = alLeft
             BevelOuter = bvNone
             ControlCollection = <
@@ -98,6 +121,7 @@ inherited pgUsuario: TpgUsuario
             HorizontalPositioning = sphpFill
             Spacing = 5
             TabOrder = 1
+            ExplicitHeight = 345
             object Label2: TLabel
               Left = 0
               Top = 0
@@ -159,7 +183,7 @@ inherited pgUsuario: TpgUsuario
             Left = 385
             Top = 0
             Width = 238
-            Height = 345
+            Height = 365
             Align = alLeft
             BevelOuter = bvNone
             ControlCollection = <
@@ -197,6 +221,7 @@ inherited pgUsuario: TpgUsuario
             Padding.Left = 10
             Spacing = 5
             TabOrder = 2
+            ExplicitHeight = 345
             object Label6: TLabel
               Left = 10
               Top = 0
@@ -275,7 +300,8 @@ inherited pgUsuario: TpgUsuario
           end
         end
         inherited DBGrid1: TDBGrid
-          Height = 386
+          Width = 842
+          Height = 406
           ParentFont = False
           TitleFont.Style = [fsBold]
         end
