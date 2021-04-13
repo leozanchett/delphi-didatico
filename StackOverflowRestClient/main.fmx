@@ -1,0 +1,198 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'StackOverflow'
+  ClientHeight = 539
+  ClientWidth = 660
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 0
+    Align = Client
+    Size.Width = 660.000000000000000000
+    Size.Height = 490.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    ItemAppearanceObjects.ItemObjects.Text.Font.StyleExt = {00070000000000000004000000}
+    ItemAppearanceObjects.ItemObjects.Accessory.AccessoryType = Detail
+    ItemAppearanceObjects.ItemObjects.Accessory.Width = 30.000000000000000000
+    ItemAppearanceObjects.ItemEditObjects.Accessory.AccessoryType = Detail
+    ItemAppearanceObjects.ItemEditObjects.Accessory.Visible = True
+    ItemAppearanceObjects.ItemEditObjects.GlyphButton.ButtonType = Add
+    ItemAppearanceObjects.ItemEditObjects.GlyphButton.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Align = Center
+    OnDblClick = ListView1DblClick
+  end
+  object Layout1: TLayout
+    Align = MostTop
+    Margins.Top = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 660.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    object Label1: TLabel
+      Align = Scale
+      StyledSettings = [Family, FontColor]
+      Size.Width = 659.999328613281300000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Perguntas Delphi StackOverflow'
+      TabOrder = 0
+    end
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'https://api.stackexchange.com/2.2'
+    Params = <>
+    RaiseExceptionOn500 = False
+    Left = 320
+    Top = 88
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <
+      item
+        Name = 'site'
+        Value = 'stackoverflow'
+      end
+      item
+        Name = 'tagged'
+        Value = 'delphi'
+      end
+      item
+        Name = 'order'
+        Value = 'desc'
+      end
+      item
+        Name = 'sort'
+        Value = 'activity'
+      end>
+    Resource = 'questions'
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 320
+    Top = 148
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    ContentEncoding = 'gzip'
+    RootElement = 'items'
+    Left = 320
+    Top = 202
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTable1
+    FieldDefs = <>
+    Response = RESTResponse1
+    Left = 320
+    Top = 254
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'tags'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'owner'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'is_answered'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'view_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'answer_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'score'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'last_activity_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'creation_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'question_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'content_license'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'link'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 320
+    Top = 320
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTable1
+    ScopeMappings = <>
+    Left = 288
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 396
+    Top = 93
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'title'
+      Control = ListView1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+end

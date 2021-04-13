@@ -1,0 +1,26 @@
+inherited Form1_Windows: TForm1_Windows
+  ClientHeight = 480
+  ClientWidth = 588
+  DesignerMasterStyle = 0
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 588.000000000000000000
+    Size.Height = 431.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Text.Font.StyleExt = {00070000000000000004000000}
+    ItemAppearanceObjects.ItemObjects.Accessory.Align = Leading
+    ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+    ItemAppearanceObjects.ItemEditObjects.Accessory.VertAlign = Leading
+    ItemAppearanceObjects.ItemEditObjects.GlyphButton.Align = Trailing
+    ItemAppearanceObjects.HeaderObjects.Text.Font.StyleExt = {00070000000000000004000000}
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited Layout1: TLayout
+    Size.Width = 588.000000000000000000
+    inherited Label1: TLabel
+      Size.Width = 587.999511718750000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Text = 'Perguntas StackOverflow'
+    end
+  end
+end

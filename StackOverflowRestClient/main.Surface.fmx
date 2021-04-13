@@ -1,0 +1,25 @@
+inherited Form1_Surface: TForm1_Surface
+  ClientHeight = 1920
+  ClientWidth = 1080
+  DesignerMasterStyle = 0
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 1080.000000000000000000
+    Size.Height = 1871.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Text.Font.StyleExt = {00070000000000000004000000}
+    ItemAppearanceObjects.ItemObjects.Accessory.Align = Leading
+    ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+    ItemAppearanceObjects.ItemEditObjects.Accessory.VertAlign = Leading
+    ItemAppearanceObjects.ItemEditObjects.GlyphButton.Align = Trailing
+    ItemAppearanceObjects.HeaderObjects.Text.Font.StyleExt = {00070000000000000004000000}
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited Layout1: TLayout
+    Size.Width = 1080.000000000000000000
+    inherited Label1: TLabel
+      Size.Width = 1079.999023437500000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+    end
+  end
+end
