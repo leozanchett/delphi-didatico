@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CAD672B3-FC7D-4E51-8ABE-E32859FCC489}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TiposPrimitivos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="UserTypeseFOR.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TiposPrimitivos">
+        <MSBuild Projects="TiposPrimitivos.dproj"/>
+    </Target>
+    <Target Name="TiposPrimitivos:Clean">
+        <MSBuild Projects="TiposPrimitivos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TiposPrimitivos:Make">
+        <MSBuild Projects="TiposPrimitivos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="UserTypeseFOR">
+        <MSBuild Projects="UserTypeseFOR.dproj"/>
+    </Target>
+    <Target Name="UserTypeseFOR:Clean">
+        <MSBuild Projects="UserTypeseFOR.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UserTypeseFOR:Make">
+        <MSBuild Projects="UserTypeseFOR.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TiposPrimitivos;UserTypeseFOR"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TiposPrimitivos:Clean;UserTypeseFOR:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TiposPrimitivos:Make;UserTypeseFOR:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
