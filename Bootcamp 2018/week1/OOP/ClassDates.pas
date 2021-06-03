@@ -15,8 +15,14 @@ type
       procedure SetValue(Month, Day, Year: Integer); overload;
       procedure SetValue(NewDate: TDateTime); overload;
       function LeapYear: Boolean;
-      function GetText: string;
-      procedure Increase;
+      function GetText: string; virtual;
+      procedure Increase(_ANumberOfDays: Integer);
+      procedure Decrease(_ANumberOfDays: Integer);
+  end;
+
+  TNewDate = class(TDate)
+  public
+    function GetText: string; override;
   end;
 
 implementation
@@ -36,14 +42,19 @@ begin
    FDate := EncodeDate(Year, Month, Day);
 end;
 
-function TDate.GetText: string;
+procedure TDate.Decrease(_ANumberOfDays: Integer);
 begin
-   Result := DateToStr(FDate);
+  FDate := FDate - _ANumberOfDays;
 end;
 
-procedure TDate.Increase;
+function TDate.GetText: string;
 begin
-   FDate := FDate + 1;
+
+end;
+
+procedure TDate.Increase(_ANumberOfDays: Integer);
+begin
+   FDate := FDate + _ANumberOfDays;
 end;
 
 function TDate.LeapYear: Boolean;
@@ -59,6 +70,13 @@ end;
 procedure TDate.SetValue(Month, Day, Year: Integer);
 begin
    FDate := EncodeDate(Year, Month, Year);
+end;
+
+{ TNewDate }
+
+function TNewDate.GetText: string;
+begin
+  Result := FormatDateTime('dddddd', FDate);
 end;
 
 end.
