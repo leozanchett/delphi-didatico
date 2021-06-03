@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6E84EFFD-EC4D-4727-87E3-B490337C585F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="OOP_fundamentos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CreateForms.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="OOP_fundamentos">
+        <MSBuild Projects="OOP_fundamentos.dproj"/>
+    </Target>
+    <Target Name="OOP_fundamentos:Clean">
+        <MSBuild Projects="OOP_fundamentos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OOP_fundamentos:Make">
+        <MSBuild Projects="OOP_fundamentos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CreateForms">
+        <MSBuild Projects="CreateForms.dproj"/>
+    </Target>
+    <Target Name="CreateForms:Clean">
+        <MSBuild Projects="CreateForms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CreateForms:Make">
+        <MSBuild Projects="CreateForms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="OOP_fundamentos;CreateForms"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="OOP_fundamentos:Clean;CreateForms:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="OOP_fundamentos:Make;CreateForms:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
