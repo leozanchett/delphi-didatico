@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1BA5E99C-621B-470C-9637-D0EDBE5CFC1B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AnonymousMethods.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Threads.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AnonymousMethods">
+        <MSBuild Projects="AnonymousMethods.dproj"/>
+    </Target>
+    <Target Name="AnonymousMethods:Clean">
+        <MSBuild Projects="AnonymousMethods.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AnonymousMethods:Make">
+        <MSBuild Projects="AnonymousMethods.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Threads">
+        <MSBuild Projects="Threads.dproj"/>
+    </Target>
+    <Target Name="Threads:Clean">
+        <MSBuild Projects="Threads.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Threads:Make">
+        <MSBuild Projects="Threads.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AnonymousMethods;Threads"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AnonymousMethods:Clean;Threads:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AnonymousMethods:Make;Threads:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
