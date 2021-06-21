@@ -3,7 +3,7 @@ program CommonControls;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  ShapeComponents in 'ShapeComponents.pas' {Form1};
 
 {$R *.res}
 

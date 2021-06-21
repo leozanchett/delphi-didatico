@@ -1,17 +1,13 @@
-unit Texts;
+unit ComponentsAndStyle;
 
 interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
 
 type
-  TForm2 = class(TForm)
-    Text1: TText;
-    Rectangle1: TRectangle;
-    Rectangle2: TRectangle;
-    Circle1: TCircle;
+  TForm3 = class(TForm)
   private
     { Private declarations }
   public
@@ -19,7 +15,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  Form3: TForm3;
 
 implementation
 

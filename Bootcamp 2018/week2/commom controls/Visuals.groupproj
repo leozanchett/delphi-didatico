@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0E384886-97CC-469E-9205-61A9A00908E4}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CommonControls.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TextProject.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CompAndStyle.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CommonControls">
+        <MSBuild Projects="CommonControls.dproj"/>
+    </Target>
+    <Target Name="CommonControls:Clean">
+        <MSBuild Projects="CommonControls.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CommonControls:Make">
+        <MSBuild Projects="CommonControls.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextProject">
+        <MSBuild Projects="TextProject.dproj"/>
+    </Target>
+    <Target Name="TextProject:Clean">
+        <MSBuild Projects="TextProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextProject:Make">
+        <MSBuild Projects="TextProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CompAndStyle">
+        <MSBuild Projects="CompAndStyle.dproj"/>
+    </Target>
+    <Target Name="CompAndStyle:Clean">
+        <MSBuild Projects="CompAndStyle.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CompAndStyle:Make">
+        <MSBuild Projects="CompAndStyle.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CommonControls;TextProject;CompAndStyle"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CommonControls:Clean;TextProject:Clean;CompAndStyle:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CommonControls:Make;TextProject:Make;CompAndStyle:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
