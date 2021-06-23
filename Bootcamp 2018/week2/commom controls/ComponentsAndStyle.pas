@@ -4,10 +4,14 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
+  FMX.Controls.Presentation, FMX.StdCtrls;
 
 type
   TForm3 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    StyleBook1: TStyleBook;
   private
     { Private declarations }
   public

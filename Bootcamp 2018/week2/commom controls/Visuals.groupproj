@@ -12,6 +12,15 @@
         <Projects Include="CompAndStyle.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Layouts.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScrollBoxes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TToolBarEMultiView.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +56,41 @@
     <Target Name="CompAndStyle:Make">
         <MSBuild Projects="CompAndStyle.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Layouts">
+        <MSBuild Projects="Layouts.dproj"/>
+    </Target>
+    <Target Name="Layouts:Clean">
+        <MSBuild Projects="Layouts.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Layouts:Make">
+        <MSBuild Projects="Layouts.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScrollBoxes">
+        <MSBuild Projects="ScrollBoxes.dproj"/>
+    </Target>
+    <Target Name="ScrollBoxes:Clean">
+        <MSBuild Projects="ScrollBoxes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScrollBoxes:Make">
+        <MSBuild Projects="ScrollBoxes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TToolBarEMultiView">
+        <MSBuild Projects="TToolBarEMultiView.dproj"/>
+    </Target>
+    <Target Name="TToolBarEMultiView:Clean">
+        <MSBuild Projects="TToolBarEMultiView.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TToolBarEMultiView:Make">
+        <MSBuild Projects="TToolBarEMultiView.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="CommonControls;TextProject;CompAndStyle"/>
+        <CallTarget Targets="CommonControls;TextProject;CompAndStyle;Layouts;ScrollBoxes;TToolBarEMultiView"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CommonControls:Clean;TextProject:Clean;CompAndStyle:Clean"/>
+        <CallTarget Targets="CommonControls:Clean;TextProject:Clean;CompAndStyle:Clean;Layouts:Clean;ScrollBoxes:Clean;TToolBarEMultiView:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CommonControls:Make;TextProject:Make;CompAndStyle:Make"/>
+        <CallTarget Targets="CommonControls:Make;TextProject:Make;CompAndStyle:Make;Layouts:Make;ScrollBoxes:Make;TToolBarEMultiView:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
