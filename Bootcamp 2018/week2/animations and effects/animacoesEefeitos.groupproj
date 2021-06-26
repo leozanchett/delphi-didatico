@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2D5CA12D-4489-4DA5-9B81-36948FC1007E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="animationsAndEffects.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tabs.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="effects.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="transitions.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="animationsAndEffects">
+        <MSBuild Projects="animationsAndEffects.dproj"/>
+    </Target>
+    <Target Name="animationsAndEffects:Clean">
+        <MSBuild Projects="animationsAndEffects.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="animationsAndEffects:Make">
+        <MSBuild Projects="animationsAndEffects.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="tabs">
+        <MSBuild Projects="tabs.dproj"/>
+    </Target>
+    <Target Name="tabs:Clean">
+        <MSBuild Projects="tabs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="tabs:Make">
+        <MSBuild Projects="tabs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="effects">
+        <MSBuild Projects="effects.dproj"/>
+    </Target>
+    <Target Name="effects:Clean">
+        <MSBuild Projects="effects.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="effects:Make">
+        <MSBuild Projects="effects.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="transitions">
+        <MSBuild Projects="transitions.dproj"/>
+    </Target>
+    <Target Name="transitions:Clean">
+        <MSBuild Projects="transitions.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="transitions:Make">
+        <MSBuild Projects="transitions.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="animationsAndEffects;tabs;effects;transitions"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="animationsAndEffects:Clean;tabs:Clean;effects:Clean;transitions:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="animationsAndEffects:Make;tabs:Make;effects:Make;transitions:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
