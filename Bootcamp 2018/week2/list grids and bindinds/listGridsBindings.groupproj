@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D2F3A670-B81E-4D73-8A1C-0BC8498264D9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="basicLiveBindings.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="listsBox.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="listView.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="grids.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="basicLiveBindings">
+        <MSBuild Projects="basicLiveBindings.dproj"/>
+    </Target>
+    <Target Name="basicLiveBindings:Clean">
+        <MSBuild Projects="basicLiveBindings.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="basicLiveBindings:Make">
+        <MSBuild Projects="basicLiveBindings.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="listsBox">
+        <MSBuild Projects="listsBox.dproj"/>
+    </Target>
+    <Target Name="listsBox:Clean">
+        <MSBuild Projects="listsBox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="listsBox:Make">
+        <MSBuild Projects="listsBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="listView">
+        <MSBuild Projects="listView.dproj"/>
+    </Target>
+    <Target Name="listView:Clean">
+        <MSBuild Projects="listView.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="listView:Make">
+        <MSBuild Projects="listView.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="grids">
+        <MSBuild Projects="grids.dproj"/>
+    </Target>
+    <Target Name="grids:Clean">
+        <MSBuild Projects="grids.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="grids:Make">
+        <MSBuild Projects="grids.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="basicLiveBindings;listsBox;listView;grids"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="basicLiveBindings:Clean;listsBox:Clean;listView:Clean;grids:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="basicLiveBindings:Make;listsBox:Make;listView:Make;grids:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

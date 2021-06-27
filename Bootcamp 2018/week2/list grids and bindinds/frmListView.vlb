@@ -1,0 +1,17 @@
+﻿[FDMemTable1]
+Coordinates=0,0,84,33
+Visible=False
+
+[ListView1]
+Coordinates=10,10,89,195
+Visible=True
+
+[]
+Coordinates=103,161,82,33
+
+[BindSourceDB1]
+Coordinates=179,19,92,177
+
+[BindingsList1]
+Coordinates=111,161,82,33
+
