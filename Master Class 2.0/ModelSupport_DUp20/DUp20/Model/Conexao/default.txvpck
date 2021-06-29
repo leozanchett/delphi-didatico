@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="bt5tdk60zfapjq30p_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Conexao.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Conexao.@unitclass.DataModule1" />
+      <reference referencedUin="delphi:l_ast:src:DUp20:DUp20.Model.Conexao.@unitclass.DataModule1" />
+    </reference>
+    <reference referencedUin="design:node:::aid51raamock8el0t_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="655,108,113,57" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Conexao.TDataModule1">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,241,98" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Conexao.TDataModule1.PdvupdatesConnection" />
+    </reference>
+  </view>
+</nodeSet>

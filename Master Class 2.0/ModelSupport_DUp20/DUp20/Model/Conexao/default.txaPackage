@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <node uin="aid51raamock8el0t_n">
+    <property name="$metaclass" value="Pattern" />
+    <property name="$name" value="Singleton" />
+    <property name="PatternUPID" value="{2004-11-30-7-31-41-705-01016}" />
+    <link uin="dg7rd0lvnochz9ntn_l">
+      <property name="$metaclass" value="DesignPatternLink" />
+      <property name="$name" value="TSingleton" />
+      <property name="@supplierRole" value="_Singleton" />
+      <participant referencedUin="design:node:::aid51raamock8el0t_n" role="Client" />
+    </link>
+  </node>
+</nodeSet>

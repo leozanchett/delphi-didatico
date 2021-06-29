@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="0cmw1cmoumf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="uml:package:DUp20:src:DUp20.Model.Entidades.Produto">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,156,151" />
+      <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.Produto.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.TModelEntidades">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="320,40,206,131" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.TModelEntidades.FInstance" />
+      <reference referencedUin="delphi:e_method:src:DUp20:DUp20.Model.Entidades.TModelEntidades.Create()" />
+      <reference referencedUin="delphi:e_method:src:DUp20:DUp20.Model.Entidades.TModelEntidades.GetInstance()" />
+      <reference referencedUin="delphi:e_method:src:DUp20:DUp20.Model.Entidades.TModelEntidades.Produto()" />
+      <reference referencedUin="delphi:l_ast:src:DUp20:DUp20.Model.Entidades.TModelEntidades.FInstance">
+        <property name="sourceAnchor" value="526,163" />
+        <property name="targetAnchor" value="518,171" />
+        <property name="bendpoints" value="559,163,559,204,518,204" />
+        <property name="bounds_setted_by_user" value="True" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

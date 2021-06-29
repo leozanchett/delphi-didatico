@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="40i8n0ci3wm_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.Produto.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,300,277" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.Produto" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoGUUID" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoCODIGO" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoDESCRICAO" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoPRECO" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoNCM" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoALIQUOTA" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoST" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoSTATUS" />
+      <reference referencedUin="delphi:e_field:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.ProdutoDATAALTERACAO" />
+      <reference referencedUin="delphi:e_method:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.DataSet(Data.DB.TDataSource)" />
+      <reference referencedUin="delphi:e_method:src:DUp20:DUp20.Model.Entidades.Produto.TModelEntidadeProduto.Open()" />
+    </reference>
+    <reference referencedUin="design:node:::d31ub0j51el_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="640,167,113,57" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{47673F4E-96BA-4CB1-B7E6-44E617C21E33}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Mobile\DUp20Mobile.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DUp20Mobile">
+        <MSBuild Projects="Mobile\DUp20Mobile.dproj"/>
+    </Target>
+    <Target Name="DUp20Mobile:Clean">
+        <MSBuild Projects="Mobile\DUp20Mobile.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DUp20Mobile:Make">
+        <MSBuild Projects="Mobile\DUp20Mobile.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DUp20Mobile"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DUp20Mobile:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DUp20Mobile:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

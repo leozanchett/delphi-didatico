@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.Dup20" Type="System.String" Value="Dup20" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Dup20.Model" Type="System.String" Value="Dup20\Model" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Dup20.Model.Conexao" Type="System.String" Value="Dup20\Model\Conexao" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Dup20.Model.Entidades" Type="System.String" Value="Dup20\Model\Entidades" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.DUp20.Model.Conexao" Type="System.String" Value="DUp20\Model\Conexao" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.DUp20.Model.Entidades" Type="System.String" Value="DUp20\Model\Entidades" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.DUp20.Model.Entidades.Produto" Type="System.String" Value="DUp20\Model\Entidades\Produto" Category="General" IsBrowsable="False" />
+</TgConfig>
