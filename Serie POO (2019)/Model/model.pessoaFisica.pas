@@ -11,9 +11,12 @@ type
     private
       FNome: String;
       FSobrenome: String;
-      function Nome(_Avalue: String): iPessoa;
+      FDisplay: TEventoDisplay;
+      function Nome(_Avalue: String): iPessoa; overload;
+      function Nome: String; overload;
       function Sobrenome(_AValue: String): iPessoa;
-      function NomeCompleto: String;
+      function NomeCompleto: iPessoa;
+      function Display(_AValue: TEventoDisplay): iPessoa;
     public
       constructor Create;
       destructor Destroy; override;
@@ -41,15 +44,27 @@ begin
   inherited;
 end;
 
+function TPessoaFisica.Display(_AValue: TEventoDisplay): iPessoa;
+begin
+  Result := Self;
+  FDisplay := _AValue;
+end;
+
 function TPessoaFisica.Nome(_Avalue: String): iPessoa;
 begin
   Result := Self;
   FNome := _Avalue;
 end;
 
-function TPessoaFisica.NomeCompleto: String;
+function TPessoaFisica.Nome: String;
 begin
-  Result := FNome +' '+ FSobrenome;
+  Result := FNome;
+end;
+
+function TPessoaFisica.NomeCompleto: iPessoa;
+begin
+  Result := Self;
+  FDisplay(FNome +' '+ FSobrenome);
 end;
 
 function TPessoaFisica.Sobrenome(_AValue: String): iPessoa;
