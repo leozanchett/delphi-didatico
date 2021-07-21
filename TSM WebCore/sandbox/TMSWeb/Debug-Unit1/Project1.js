@@ -38035,6 +38035,11 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
       this.FOnFontCacheReady = null;
       this.FMaxZIndex = 0;
       this.FCreatedProc = null;
+      this.FHotReloadPollInterval = 0;
+      this.FHotReloadReq = null;
+      this.FHotReloadTimer = 0;
+      this.FHotReloadVersion = 0;
+      this.FHotReloadFile = "";
     };
     this.$final = function () {
       this.FLastReq = undefined;
@@ -38051,6 +38056,7 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
       this.FOnOAuthCallBack = undefined;
       this.FOnFontCacheReady = undefined;
       this.FCreatedProc = undefined;
+      this.FHotReloadReq = undefined;
       pas["WEBLib.Controls"].TControl.$final.call(this);
     };
     this.DoFormLoad = function (Event) {
@@ -38249,6 +38255,66 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
       document.body.appendChild(lElement);
       lElement.click();
       document.body.removeChild(lElement);
+    };
+    var cMethodLoad = "load";
+    var cMethodAbort = "abort";
+    var cMethodGet = "GET";
+    var cDeli = "\/";
+    this.OnHotReloadTick = function () {
+      var lReq = null;
+      var lBuffer = "";
+      if (this.FHotReloadReq !== null) return;
+      lReq = new XMLHttpRequest();
+      lReq.addEventListener(cMethodLoad,rtl.createSafeCallback(this,"OnHotReloadLoad"));
+      lReq.addEventListener(cMethodAbort,rtl.createSafeCallback(this,"OnHotReloadAbort"));
+      lBuffer = window.document.location.href;
+      lBuffer = pas["WEBLib.Utils"].TPath.GetDirectoryName(lBuffer);
+      lBuffer = lBuffer + cDeli + this.FHotReloadFile;
+      lReq.open(cMethodGet,lBuffer);
+      lReq.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");
+      lReq.send();
+      this.FHotReloadReq = lReq;
+    };
+    this.OnHotReloadLoad = function (AEvent) {
+      var Result = false;
+      var lData = null;
+      try {
+        lData = JSON.parse(this.FHotReloadReq.responseText);
+        this.HandleHotReload(lData);
+      } catch ($e) {
+        window.console.error("Error parsing Hotreload JSON: " + this.FHotReloadReq.responseText);
+      };
+      this.FHotReloadReq = null;
+      Result = true;
+      return Result;
+    };
+    this.OnHotReloadAbort = function (AEvent) {
+      var Result = false;
+      this.FHotReloadReq = null;
+      Result = false;
+      return Result;
+    };
+    var cAttributeVersion = "version";
+    this.HandleHotReload = function (AData) {
+      var lVersion = undefined;
+      lVersion = AData[cAttributeVersion];
+      if (this.FHotReloadVersion === 0) {
+        this.FHotReloadVersion = rtl.trunc(lVersion);
+        return;
+      };
+      if (rtl.trunc(lVersion) > this.FHotReloadVersion) {
+        this.FHotReloadVersion = rtl.trunc(lVersion);
+        window.location.reload(false);
+      };
+    };
+    this.StartHotReload = function () {
+      if (this.FHotReloadTimer === 0) this.FHotReloadTimer = window.setInterval(rtl.createSafeCallback(this,"OnHotReloadTick"),this.FHotReloadPollInterval);
+    };
+    this.StopHotReload = function () {
+      if (this.FHotReloadTimer !== 0) {
+        window.clearInterval(this.FHotReloadTimer);
+        this.FHotReloadTimer = 0;
+      };
     };
     this.CreateNewForm = function (AForm, HTML) {
       var eh = null;
@@ -38569,6 +38635,8 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
         AForm.GetControls(i).EnableTab();
       };
     };
+    var cDefPollInterval = 1000;
+    var cDefFileName = "TMSHotreloadVersion.json";
     this.Create$1 = function (AOwner) {
       this.FFormStack = pas.Classes.TList.$create("Create$1");
       this.FParameters = pas.Classes.TStringList.$create("Create$1");
@@ -38582,6 +38650,9 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
       this.FThemeColor = 14917120;
       this.FThemeTextColor = 16777215;
       this.FMaxZIndex = 999998;
+      this.FHotReloadPollInterval = 1000;
+      this.FHotReloadFile = cDefFileName;
+      this.StartHotReload();
       window.addEventListener("error",rtl.createCallback(this,"DoHandleError"));
       this.FErrorType = $mod.TApplicationErrorType.aeSilent;
       this.FErrorType = $mod.TApplicationErrorType.aeFooter;
@@ -38589,6 +38660,7 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
       return this;
     };
     this.Destroy = function () {
+      this.StopHotReload();
       rtl.free(this,"FFormStack");
       rtl.free(this,"FParameters");
       pas["WEBLib.Controls"].TControl.Destroy.call(this);
@@ -47643,51 +47715,6 @@ rtl.module("WEBLib.Actions",["System","Classes","Web","JS","WEBLib.Controls"],fu
     rtl.addIntf(this,pas.System.IUnknown);
   });
 },["SysUtils"]);
-rtl.module("Unit2",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","WEBLib.Actions","WEBLib.ExtCtrls"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass(this,"TForm2",pas["WEBLib.Forms"].TForm,function () {
-    this.$init = function () {
-      pas["WEBLib.Forms"].TForm.$init.call(this);
-      this.wlblAbrirForm1 = null;
-    };
-    this.$final = function () {
-      this.wlblAbrirForm1 = undefined;
-      pas["WEBLib.Forms"].TForm.$final.call(this);
-    };
-    this.wlblAbrirForm1Click = function (Sender) {
-      pas.classFuncoesWeb.TFuncoesWeb.AbrirNovaPagina(pas.Unit1.TForm1);
-    };
-    this.LoadDFMValues = function () {
-      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
-      this.wlblAbrirForm1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["novapag"]);
-      this.wlblAbrirForm1.BeforeLoadDFMValues();
-      try {
-        this.SetName("Form2");
-        this.SetWidth(640);
-        this.SetHeight(480);
-        this.wlblAbrirForm1.SetParentComponent(this);
-        this.wlblAbrirForm1.SetName("wlblAbrirForm1");
-        this.wlblAbrirForm1.SetLeft(240);
-        this.wlblAbrirForm1.SetTop(232);
-        this.wlblAbrirForm1.SetWidth(59);
-        this.wlblAbrirForm1.SetHeight(13);
-        this.wlblAbrirForm1.SetControlCursor(21);
-        this.wlblAbrirForm1.SetCaption("Abrir Form 1");
-        this.wlblAbrirForm1.SetHeightPercent(100.000000000000000000);
-        this.wlblAbrirForm1.SetWidthPercent(100.000000000000000000);
-        this.SetEvent$1(this.wlblAbrirForm1,this,"OnClick","wlblAbrirForm1Click");
-      } finally {
-        this.wlblAbrirForm1.AfterLoadDFMValues();
-      };
-    };
-    rtl.addIntf(this,pas.System.IUnknown);
-    var $r = this.$rtti;
-    $r.addField("wlblAbrirForm1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
-    $r.addMethod("wlblAbrirForm1Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
-  });
-  this.Form2 = null;
-},["classFuncoesWeb","Unit1"]);
 rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","classFuncoesWeb","WEBLib.ExtCtrls","WEBLib.Actions"],function () {
   "use strict";
   var $mod = this;
@@ -47708,21 +47735,6 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       this.WebElementActionList1 = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
-    this.wlblAbrirForm2Click = function (Sender) {
-      pas.classFuncoesWeb.TFuncoesWeb.AbrirNovaPagina(pas.Unit2.TForm2);
-    };
-    this.WebElementActionList1Execute = function (Sender, AAction, Element, Event) {
-      var $tmp = AAction.GetIndex();
-      if ($tmp === 0) {
-        pas["WEBLib.Dialogs"].ShowMessage(AAction.FName)}
-       else if ($tmp === 1) pas["WEBLib.Dialogs"].ShowMessage(AAction.FName);
-    };
-    this.WebFormShow = function (Sender) {
-      var el = null;
-      el = document.getElementById("action1");
-      pas["WEBLib.Dialogs"].ShowMessage(el.innerHTML);
-      el.setAttribute("class",el.getAttribute("class") + " active");
-    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["teste"]);
@@ -47739,7 +47751,6 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.SetName("Form1");
         this.SetWidth(640);
         this.SetHeight(480);
-        this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(96);
@@ -47763,7 +47774,6 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.wlblAbrirForm2.SetLayout(pas["WEBLib.StdCtrls"].TTextLayout.tlCenter);
         this.wlblAbrirForm2.SetTransparent(false);
         this.wlblAbrirForm2.SetWidthPercent(100.000000000000000000);
-        this.SetEvent$1(this.wlblAbrirForm2,this,"OnClick","wlblAbrirForm2Click");
         this.wlblAction1.SetParentComponent(this);
         this.wlblAction1.SetName("wlblAction1");
         this.wlblAction1.SetLeft(58);
@@ -47791,7 +47801,6 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         var $with1 = this.WebElementActionList1.FActions.Add$1();
         $with1.SetElementID("action2");
         $with1.SetName("Acao2");
-        this.SetEvent$1(this.WebElementActionList1,this,"OnExecute","WebElementActionList1Execute");
         this.WebElementActionList1.SetLeft(424);
         this.WebElementActionList1.SetTop(352);
       } finally {
@@ -47809,12 +47818,49 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
     $r.addField("wlblAction1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("wlblAction2",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("WebElementActionList1",pas["WEBLib.Actions"].$rtti["TElementActionList"]);
-    $r.addMethod("wlblAbrirForm2Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
-    $r.addMethod("WebElementActionList1Execute",0,[["Sender",pas.System.$rtti["TObject"]],["AAction",pas["WEBLib.Actions"].$rtti["TElementAction"]],["Element",pas["WEBLib.Controls"].$rtti["TJSHTMLElementRecord"]],["Event",pas["WEBLib.Actions"].$rtti["TJSEventParameter"]]]);
-    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.Form1 = null;
-},["Unit2"]);
+});
+rtl.module("Unit2",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","WEBLib.Actions","WEBLib.ExtCtrls"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass(this,"TForm2",pas["WEBLib.Forms"].TForm,function () {
+    this.$init = function () {
+      pas["WEBLib.Forms"].TForm.$init.call(this);
+      this.wlblAbrirForm1 = null;
+    };
+    this.$final = function () {
+      this.wlblAbrirForm1 = undefined;
+      pas["WEBLib.Forms"].TForm.$final.call(this);
+    };
+    this.LoadDFMValues = function () {
+      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
+      this.wlblAbrirForm1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["novapag"]);
+      this.wlblAbrirForm1.BeforeLoadDFMValues();
+      try {
+        this.SetName("Form2");
+        this.SetWidth(640);
+        this.SetHeight(480);
+        this.wlblAbrirForm1.SetParentComponent(this);
+        this.wlblAbrirForm1.SetName("wlblAbrirForm1");
+        this.wlblAbrirForm1.SetLeft(240);
+        this.wlblAbrirForm1.SetTop(232);
+        this.wlblAbrirForm1.SetWidth(59);
+        this.wlblAbrirForm1.SetHeight(13);
+        this.wlblAbrirForm1.SetControlCursor(21);
+        this.wlblAbrirForm1.SetCaption("Abrir Form 1");
+        this.wlblAbrirForm1.SetHeightPercent(100.000000000000000000);
+        this.wlblAbrirForm1.SetWidthPercent(100.000000000000000000);
+      } finally {
+        this.wlblAbrirForm1.AfterLoadDFMValues();
+      };
+    };
+    rtl.addIntf(this,pas.System.IUnknown);
+    var $r = this.$rtti;
+    $r.addField("wlblAbrirForm1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+  });
+  this.Form2 = null;
+});
 rtl.module("program",["System","WEBLib.Forms","Unit1","Unit2","classFuncoesWeb"],function () {
   "use strict";
   var $mod = this;
@@ -47828,11 +47874,6 @@ rtl.module("program",["System","WEBLib.Forms","Unit1","Unit2","classFuncoesWeb"]
         return this.p.Form1;
       }, set: function (v) {
         this.p.Form1 = v;
-      }});
-    pas["WEBLib.Forms"].Application.CreateForm(pas.Unit2.TForm2,{p: pas.Unit2, get: function () {
-        return this.p.Form2;
-      }, set: function (v) {
-        this.p.Form2 = v;
       }});
     pas["WEBLib.Forms"].Application.Run();
   };
