@@ -29,7 +29,8 @@ uses
 
 procedure TForm2.wlblAbrirForm1Click(Sender: TObject);
 begin
-  TFuncoesWeb.AbrirNovaPagina(Tform1);
+  //TFuncoesWeb.AbrirNovaPagina(Tform1);
+  Application.CreateForm(Tform1, form1);
 end;
 
 end.
