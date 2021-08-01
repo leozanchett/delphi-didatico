@@ -79,7 +79,7 @@ object Form1: TForm1
   end
   object BindNavigator1: TBindNavigator
     Position.X = 32.000000000000000000
-    Position.Y = 296.000000000000000000
+    Position.Y = 256.000000000000000000
     Size.Width = 241.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
@@ -87,6 +87,25 @@ object Form1: TForm1
     DataSource = abs
     xRadius = 4.000000000000000000
     yRadius = 4.000000000000000000
+  end
+  object btnSalvar: TButton
+    Position.X = 168.000000000000000000
+    Position.Y = 408.000000000000000000
+    TabOrder = 10
+    Text = 'SALVAR'
+    OnClick = btnSalvarClick
+  end
+  object edtCampoObrigatorio: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 11
+    Position.X = 160.000000000000000000
+    Position.Y = 320.000000000000000000
+  end
+  object edtEnderecoObrigatorio: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 13
+    Position.X = 160.000000000000000000
+    Position.Y = 360.000000000000000000
   end
   object abs: TAdapterBindSource
     AutoActivate = True

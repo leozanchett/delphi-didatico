@@ -12,6 +12,14 @@ uses
   Fmx.Bind.Editors, ClassRTTI;
 
 type
+  CampoObrigatorio = class(TCustomAttribute)
+    private
+      FMensagemCampoVazio: String;
+    public
+      property MensagemCampoVazio: String read FMensagemCampoVazio write FMensagemCampoVazio;
+      Constructor Create(_AMensagemCampoVazio: String);
+  end;
+
   TForm1 = class(TForm)
     Memo1: TMemo;
     btnRTTI: TButton;
@@ -23,10 +31,16 @@ type
     Label3: TLabel;
     BindNavigator1: TBindNavigator;
     abs: TAdapterBindSource;
+    btnSalvar: TButton;
+    [CampoObrigatorio('O campo edit obrigatório não pode ser vazio')]
+    edtCampoObrigatorio: TEdit;
+    [CampoObrigatorio('O campo endereço obrigatório não pode ser vazio')]
+    edtEnderecoObrigatorio: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure absCreateAdapter(Sender: TObject;
       var ABindSourceAdapter: TBindSourceAdapter);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,12 +84,20 @@ begin
   ABindSourceAdapter := TListBindSourceAdapter<TCliente>.Create(nil, ListaCliente, false);
   ACliente := TCliente.Create;
   try
-    //ARttiExemplo.RTTIExemplo(self, AInfoFieldRTTI);
     FRttiExemplo.RTTIExemploComUnit(ACliente, AInfoFieldRTTI);
     Memo1.Lines.Text := AInfoFieldRTTI;
   finally
     ACliente.Free;
   end;
+end;
+
+procedure TForm1.btnSalvarClick(Sender: TObject);
+var
+  ARetornoValidacaoCampos: String;
+begin
+  ARetornoValidacaoCampos := FRttiExemplo.ValidarCamposObrigatorios(self);
+  if not ARetornoValidacaoCampos.IsEmpty then
+    ShowMessage(ARetornoValidacaoCampos);
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -91,6 +113,13 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
+end;
+
+{ CampoObrigatorio }
+
+constructor CampoObrigatorio.Create(_AMensagemCampoVazio: String);
+begin
+   FMensagemCampoVazio := _AMensagemCampoVazio;
 end;
 
 end.

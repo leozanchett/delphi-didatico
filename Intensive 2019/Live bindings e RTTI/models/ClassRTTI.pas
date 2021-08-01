@@ -10,7 +10,7 @@ type
     private
       FLinkControlToField: TLinkControlToField;
     public
-      procedure RTTIExemplo(const _ACLasse: TObject; var _APrinter: String);
+      function ValidarCamposObrigatorios(const _ACLasse: TObject): String;
       procedure RTTIExemploComUnit(const _ACLasse: TObject; var _APrinter: String);
   end;
 
@@ -18,29 +18,34 @@ implementation
 
 uses
   System.Rtti, System.SysUtils, ClassCustomAtribute, ClassLinkControlToField,
-  System.Classes, frmPrincipal, FMX.Forms;
+  System.Classes, frmPrincipal, FMX.Forms, FMX.Edit, System.AnsiStrings;
 
 { TRTTIExemplo }
 
-procedure TRTTIExemplo.RTTIExemplo(const _ACLasse: TObject; var _APrinter: String);
+function TRTTIExemplo.ValidarCamposObrigatorios(const _ACLasse: TObject): String;
 var
   AContext : TRTTIContext;
   ATypes: TRttiType;
   AFields : TRttiField;
+  ACustomAtr : TCustomAttribute;
 begin
+    Result := '';
     AContext := TRttiContext.Create;
     try
       ATypes := AContext.GetType(_ACLasse.ClassType);
-      try
-        for AFields in ATypes.GetFields do
-          if Assigned(AFields.FieldType) then
-            _APrinter := _APrinter +'Field name: '+ AFields.Name+ ' Field type: '+ AFields.FieldType.ToString + sLineBreak
-          else
-            _APrinter := _APrinter +'Field name: '.ToUpper+ AFields.Name.ToUpper+ ' Field type: nill'.ToUpper + sLineBreak;
-      except
-        on e: Exception do
-          exit;
-      end;
+      for AFields in ATypes.GetFields do
+        for ACustomAtr in AFields.GetAttributes do
+          if ACustomAtr is CampoObrigatorio then
+            Case IndexStr(AFields.FieldType.ToString, ['TEdit', 'TButton']) of
+               0: begin
+                 if TEdit(TForm(_ACLasse).FindComponent(AFields.Name)).Text.IsEmpty then begin
+                    TEdit(TForm(_ACLasse).FindComponent(AFields.Name)).SetFocus;
+                    Result := CampoObrigatorio(ACustomAtr).MensagemCampoVazio;
+                    Exit;
+                 end;
+
+               end;
+            End;
     finally
       AContext.Free;
     end;
