@@ -97,6 +97,7 @@
         <DCCReference Include="model\model.interfaces.pas"/>
         <DCCReference Include="model\model.pessoaFisica.pas"/>
         <DCCReference Include="model\model.pessoaJuridica.pas"/>
+        <DCCReference Include="model\model.endereco.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

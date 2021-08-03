@@ -5,7 +5,8 @@ uses
   frmPrincipal in 'frmPrincipal.pas' {Form1},
   model.interfaces in 'model\model.interfaces.pas',
   model.pessoaFisica in 'model\model.pessoaFisica.pas',
-  model.pessoaJuridica in 'model\model.pessoaJuridica.pas';
+  model.pessoaJuridica in 'model\model.pessoaJuridica.pas',
+  model.endereco in 'model\model.endereco.pas';
 
 {$R *.res}
 
