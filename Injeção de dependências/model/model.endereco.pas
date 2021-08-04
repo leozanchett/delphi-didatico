@@ -12,7 +12,7 @@ type
     private
       // refêrencia fraca, não agrega na contagem de injeção de dependência dessa classe para
       // posteriormente ser limpo da memória.
-      [Weak]
+      [WeakAttribute]
       FParent: T;
       FRua: String;
     public
