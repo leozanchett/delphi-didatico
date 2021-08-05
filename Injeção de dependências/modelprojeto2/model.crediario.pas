@@ -6,10 +6,11 @@ uses
   model.interfaces;
 
 type
-  TCrediario = class(TInterfacedObject, iCrediario, iRegras)
+  TCrediario = class(TInterfacedObject, iCrediario, iRegras, iVisitor)
     private
       [WeakAttribute]
       FPagamento : iPagamento;
+      FVisit: iPagamento;
       FJuros: boolean;
     public
       constructor Create(const _AParent: iPagamento);
@@ -18,6 +19,8 @@ type
       function Juros(const _AValue: boolean): iCrediario; overload;
       function Juros: boolean; overload;
       function Total: Currency;
+      function Visit(const _AValue: iPagamento): iRegras;
+      function Visitor: iVisitor;
       function &End: iPagamento;
   end;
 
@@ -59,7 +62,18 @@ end;
 
 function TCrediario.Total: Currency;
 begin
+   Result := 0;
+end;
 
+function TCrediario.Visit(const _AValue: iPagamento): iRegras;
+begin
+  Result := Self;
+  FVisit := _AValue;
+end;
+
+function TCrediario.Visitor: iVisitor;
+begin
+  Result := Self;
 end;
 
 end.

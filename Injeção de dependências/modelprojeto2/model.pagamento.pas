@@ -6,11 +6,12 @@ uses
   model.interfaces;
 
 type
-  TPagamento = class(TInterfacedObject, iPagamento, iRegras)
+  TPagamento = class(TInterfacedObject, iPagamento, iRegras, iVisitable)
     private
       FValor: Currency;
       FCrediario : iCrediario;
       FCartao: iCartao;
+      FVisitor: iVisitor;
     public
       constructor Create;
       destructor Destroy; override;
@@ -20,6 +21,7 @@ type
       function Total: Currency;
       function Cartao: iCartao;
       function Crediario: iCrediario;
+      function Accept(const _AVisitor: iVisitor): iRegras;
   end;
 
 implementation
@@ -29,10 +31,17 @@ uses
 
 { TPagamento }
 
+function TPagamento.Accept(const _AVisitor: iVisitor): iRegras;
+begin
+  FVisitor := _AVisitor;
+  Result := FVisitor.Visit(Self);
+end;
+
 function TPagamento.Cartao: iCartao;
 begin
    FCartao := TCartao.New(Self);
    Result := FCartao;
+   Self.Accept(FCartao.Visitor);
 end;
 
 constructor TPagamento.Create;
@@ -44,6 +53,7 @@ function TPagamento.Crediario: iCrediario;
 begin
    FCrediario := TCrediario.New(self);
    Result := FCrediario;
+   Self.Accept(FCrediario.Visitor);
 end;
 
 destructor TPagamento.Destroy;
