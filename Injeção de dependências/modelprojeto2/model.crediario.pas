@@ -62,7 +62,10 @@ end;
 
 function TCrediario.Total: Currency;
 begin
-   Result := 0;
+  if FJuros then
+    Result := FPagamento.Valor + (FPagamento.Valor * 0.4)
+  else
+    Result := FPagamento.Valor + (FPagamento.Valor * 0.3);
 end;
 
 function TCrediario.Visit(const _AValue: iPagamento): iRegras;

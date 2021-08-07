@@ -25,7 +25,7 @@ type
   // quem aceita o especialista para resolver algo
   iVisitable = interface
     ['{C544DDBC-F387-4F7B-8200-9F6025F14890}']
-    function Accept(const _AVisitor: iVisitor): iRegras;
+    //function Accept(const _AVisitor: iVisitor): iRegras;
   end;
 
   iRegras = interface

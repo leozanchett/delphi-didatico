@@ -48,7 +48,7 @@ end;
 
 function TCartao.Total: Currency;
 begin
-
+  Result := FParent.Valor + (FParent.Valor * 0.2);
 end;
 
 function TCartao.Visit(const _AValue: iPagamento): iRegras;

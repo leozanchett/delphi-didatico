@@ -6,11 +6,14 @@ uses
   model.interfaces;
 
 type
-  TPagamento = class(TInterfacedObject, iPagamento, iRegras, iVisitable)
+  TPagamento = class(TInterfacedObject, iPagamento, iRegras)
     private
       FValor: Currency;
+      [WeakAttribute]
       FCrediario : iCrediario;
+      [WeakAttribute]
       FCartao: iCartao;
+      [WeakAttribute]
       FVisitor: iVisitor;
     public
       constructor Create;
@@ -21,7 +24,7 @@ type
       function Total: Currency;
       function Cartao: iCartao;
       function Crediario: iCrediario;
-      function Accept(const _AVisitor: iVisitor): iRegras;
+      //function Accept(const _AVisitor: iVisitor): iRegras;
   end;
 
 implementation
@@ -31,17 +34,17 @@ uses
 
 { TPagamento }
 
-function TPagamento.Accept(const _AVisitor: iVisitor): iRegras;
+{function TPagamento.Accept(const _AVisitor: iVisitor): iRegras;
 begin
   FVisitor := _AVisitor;
-  Result := FVisitor.Visit(Self);
-end;
+  //Result := FVisitor.Visit(Self);
+end;}
 
 function TPagamento.Cartao: iCartao;
 begin
    FCartao := TCartao.New(Self);
    Result := FCartao;
-   Self.Accept(FCartao.Visitor);
+   FVisitor := FCartao.Visitor;
 end;
 
 constructor TPagamento.Create;
@@ -53,7 +56,7 @@ function TPagamento.Crediario: iCrediario;
 begin
    FCrediario := TCrediario.New(self);
    Result := FCrediario;
-   Self.Accept(FCrediario.Visitor);
+   FVisitor :=  FCrediario.Visitor;
 end;
 
 destructor TPagamento.Destroy;
@@ -69,7 +72,7 @@ end;
 
 function TPagamento.Total: Currency;
 begin
-   Result := 0;
+   Result := FVisitor.Visit(Self).Total;
 end;
 
 function TPagamento.Valor(const _AValue: Currency): iPagamento;
