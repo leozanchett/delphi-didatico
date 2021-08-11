@@ -3,15 +3,14 @@ unit Calculadora.Dividir;
 interface
 
 uses
-  Calculadora.Interfaces;
+  Calculadora.Interfaces, Calculadora.Operacoes, System.Generics.Collections;
 
 type
-   TDividir = class(TInterfacedObject, iOperacoes)
-    constructor Create;
+   TDividir = class sealed(TOperacoes)
+    constructor Create(var _ALista: TList<Double>);
     destructor Destroy; override;
-    class function New: iOperacoes;
-    function Operacao(const _ANum1, _ANum2: Double): Double; overload;
-    function Operacao(const _ANum1, _ANum2: String): String; overload;
+    class function New(var _ALista: TList<Double>): iOperacoes;
+    function Executar: String; override;
   end;
 
 implementation
@@ -21,9 +20,9 @@ uses
 
 { TDividir }
 
-constructor TDividir.Create;
+constructor TDividir.Create(var _ALista: TList<Double>);
 begin
-
+   FLista := _ALista;
 end;
 
 destructor TDividir.Destroy;
@@ -32,25 +31,19 @@ begin
   inherited;
 end;
 
-class function TDividir.New: iOperacoes;
+function TDividir.Executar: String;
+var
+  i: Integer;
 begin
-  Result := Self.Create;
+  Result := FLista[0].ToString;
+  for i := 1  to Pred(FLista.Count) do
+    Result := CurrToStr(Result.ToCurrency / FLista[i]);
+  inherited;
 end;
 
-function TDividir.Operacao(const _ANum1, _ANum2: String): String;
+class function TDividir.New(var _ALista: TList<Double>): iOperacoes;
 begin
-  if _ANum2.ToCurrency <= 0 then
-    raise Exception.Create('O valor de ' + _ANum2 +
-      ' é inválido para operações de divisão.');
-  Result := CurrToStr(_ANum1.ToCurrency / _ANum2.ToCurrency);
-end;
-
-function TDividir.Operacao(const _ANum1, _ANum2: Double): Double;
-begin
-  if _ANum2 <= 0 then
-    raise Exception.Create('O valor de ' + _ANum2.ToString +
-      ' é inválido para operações de divisão.');
-  Result := _ANum1 / _ANum2;
+  Result := Self.Create(_ALista);
 end;
 
 end.

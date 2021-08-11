@@ -9,7 +9,8 @@ uses
   Calculadora.Subtrair in 'Calculadora.Subtrair.pas',
   Calculadora.Multiplicar in 'Calculadora.Multiplicar.pas',
   Calculadora.Dividir in 'Calculadora.Dividir.pas',
-  Calculadora.Helpers in 'Calculadora.Helpers.pas';
+  Calculadora.Helpers in 'Calculadora.Helpers.pas',
+  Calculadora.Operacoes in 'Calculadora.Operacoes.pas';
 
 {$R *.res}
 

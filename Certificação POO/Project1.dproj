@@ -101,6 +101,7 @@
         <DCCReference Include="Calculadora.Multiplicar.pas"/>
         <DCCReference Include="Calculadora.Dividir.pas"/>
         <DCCReference Include="Calculadora.Helpers.pas"/>
+        <DCCReference Include="Calculadora.Operacoes.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

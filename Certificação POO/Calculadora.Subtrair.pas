@@ -3,15 +3,14 @@ unit Calculadora.Subtrair;
 interface
 
 uses
-  Calculadora.Interfaces;
+  Calculadora.Interfaces, Calculadora.Operacoes, System.Generics.Collections;
 
 type
-    TSubtrair = class(TInterfacedObject, iOperacoes)
-    constructor Create;
+    TSubtrair = class sealed(TOperacoes)
+    constructor Create(var _ALista: TList<Double>);
     destructor Destroy; override;
-    class function New: iOperacoes;
-    function Operacao(const _ANum1, _ANum2: Double): Double; overload;
-    function Operacao(const _ANum1, _ANum2: String): String; overload;
+    class function New(var _ALista: TList<Double>): iOperacoes;
+     function Executar: String; override;
   end;
 
 implementation
@@ -21,9 +20,9 @@ uses
 
 { TSubtrair }
 
-constructor TSubtrair.Create;
+constructor TSubtrair.Create(var _ALista: TList<Double>);
 begin
-
+  FLista := _ALista;
 end;
 
 destructor TSubtrair.Destroy;
@@ -32,19 +31,20 @@ begin
   inherited;
 end;
 
-class function TSubtrair.New: iOperacoes;
+function TSubtrair.Executar: String;
+var
+  i: Integer;
 begin
-  Result := Self.Create;
+  Result := FLista[0].ToString;
+  for i := 1  to Pred(FLista.Count) do
+    Result := CurrToStr(Result.ToCurrency - FLista[i]);
+  inherited;
 end;
 
-function TSubtrair.Operacao(const _ANum1, _ANum2: Double): Double;
+class function TSubtrair.New(var _ALista: TList<Double>): iOperacoes;
 begin
-  Result := _ANum1 - _ANum2;
+  Result := Self.Create(_ALista);
 end;
 
-function TSubtrair.Operacao(const _ANum1, _ANum2: String): String;
-begin
-  Result := CurrToStr(_ANum1.ToCurrency - _ANum2.ToCurrency);
-end;
 
 end.

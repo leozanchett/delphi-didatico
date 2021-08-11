@@ -42,22 +42,22 @@ implementation
 
 procedure TForm1.btnDividirClick(Sender: TObject);
 begin
-   edtResultado.Text := Calculadora.Dividir.Operacao(edtValor1.Text, edtValor2.Text);
+  edtResultado.Text := Calculadora.Add(edtValor1.Text).Add(edtValor2.Text).Dividir.Executar;
 end;
 
 procedure TForm1.btnMultiplicarClick(Sender: TObject);
 begin
-   edtResultado.Text := Calculadora.Multiplicar.Operacao(edtValor1.Text, edtValor2.Text);
+  edtResultado.Text := Calculadora.Add(edtValor1.Text).Add(edtValor2.Text).Multiplicar.Executar;
 end;
 
 procedure TForm1.btnSomarClick(Sender: TObject);
 begin
-  edtResultado.Text := Calculadora.Soma.Operacao(edtValor1.Text, edtValor2.Text);
+  edtResultado.Text := Calculadora.Add(edtValor1.Text).Add(edtValor2.Text).Soma.Executar;
 end;
 
 procedure TForm1.btnSubtrairClick(Sender: TObject);
 begin
-   edtResultado.Text := Calculadora.Subtrair.Operacao(edtValor1.Text, edtValor2.Text);
+  edtResultado.Text := Calculadora.Add(edtValor1.Text).Add(edtValor2.Text).Subtrair.Executar;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

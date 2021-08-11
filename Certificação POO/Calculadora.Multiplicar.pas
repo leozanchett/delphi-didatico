@@ -3,15 +3,14 @@ unit Calculadora.Multiplicar;
 interface
 
 uses
-  Calculadora.Interfaces;
+  Calculadora.Interfaces, Calculadora.Operacoes, System.Generics.Collections;
 
 type
-  TMultiplicar = class(TInterfacedObject, iOperacoes)
-    constructor Create;
+  TMultiplicar = class sealed(TOperacoes)
+    constructor Create(var _ALista: TList<Double>);
     destructor Destroy; override;
-    class function New: iOperacoes;
-    function Operacao(const _ANum1, _ANum2: Double): Double; overload;
-    function Operacao(const _ANum1, _ANum2: String): String; overload;
+    class function New(var _ALista: TList<Double>): iOperacoes;
+    function Executar: String; override;
   end;
 
 implementation
@@ -21,9 +20,9 @@ uses
 
 { TMultiplicar }
 
-constructor TMultiplicar.Create;
+constructor TMultiplicar.Create(var _ALista: TList<Double>);
 begin
-
+  FLista := _ALista;
 end;
 
 destructor TMultiplicar.Destroy;
@@ -32,19 +31,19 @@ begin
   inherited;
 end;
 
-class function TMultiplicar.New: iOperacoes;
+function TMultiplicar.Executar: String;
+var
+  i: Integer;
 begin
-  Result := Self.Create;
+  Result := FLista[0].ToString;
+  for i := 1  to Pred(FLista.Count) do
+    Result := CurrToStr(Result.ToCurrency * FLista[i]);
+  inherited;
 end;
 
-function TMultiplicar.Operacao(const _ANum1, _ANum2: String): String;
+class function TMultiplicar.New(var _ALista: TList<Double>): iOperacoes;
 begin
-  Result := CurrToStr(_ANum1.ToCurrency * _ANum2.ToCurrency);
-end;
-
-function TMultiplicar.Operacao(const _ANum1, _ANum2: Double): Double;
-begin
-  Result := _ANum1 * _ANum2;
+  Result := Self.Create(_ALista);
 end;
 
 end.
