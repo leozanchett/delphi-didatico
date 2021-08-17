@@ -3,9 +3,17 @@ unit ClasseThread;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, Vcl.StdCtrls;
 
 type
+  TContaLabel = class(TThread)
+    fLb: TLabel;
+    fConta: Integer;
+    procedure Contator;
+    procedure Execute; override;
+    constructor Cria(const Lb: TLabel);
+  end;
+
   TprintThread = class(TThread)
   private
     Index: Integer;
@@ -43,6 +51,34 @@ var
 begin
   for i := 1 to 1000 do
     Synchronize(Print);
+end;
+
+{ TContaLabel }
+
+procedure TContaLabel.Contator;
+begin
+  Inc(fConta);
+  fLb.Caption := IntToStr(fConta);
+  if fConta = 500 then
+    Terminate;
+end;
+
+constructor TContaLabel.Cria(const Lb: TLabel);
+begin
+  Create(False);
+  fLb := Lb;
+  FreeOnTerminate := True;
+  fConta := 0;
+end;
+
+procedure TContaLabel.Execute;
+begin
+  inherited;
+  while not Terminated do
+  begin
+    Synchronize(Contator);
+    Sleep(10);
+  end;
 end;
 
 end.
