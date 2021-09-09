@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CB874D6A-7E47-4C27-B965-54208A375CB7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Redis.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Chat.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Redis">
+        <MSBuild Projects="Redis.dproj"/>
+    </Target>
+    <Target Name="Redis:Clean">
+        <MSBuild Projects="Redis.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Redis:Make">
+        <MSBuild Projects="Redis.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Chat">
+        <MSBuild Projects="Chat.dproj"/>
+    </Target>
+    <Target Name="Chat:Clean">
+        <MSBuild Projects="Chat.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Chat:Make">
+        <MSBuild Projects="Chat.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Redis;Chat"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Redis:Clean;Chat:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Redis:Make;Chat:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
