@@ -9,6 +9,9 @@
         <Projects Include="Chat.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Cache.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Chat:Make">
         <MSBuild Projects="Chat.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Cache">
+        <MSBuild Projects="Cache.dproj"/>
+    </Target>
+    <Target Name="Cache:Clean">
+        <MSBuild Projects="Cache.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cache:Make">
+        <MSBuild Projects="Cache.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Redis;Chat"/>
+        <CallTarget Targets="Redis;Chat;Cache"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Redis:Clean;Chat:Clean"/>
+        <CallTarget Targets="Redis:Clean;Chat:Clean;Cache:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Redis:Make;Chat:Make"/>
+        <CallTarget Targets="Redis:Make;Chat:Make;Cache:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
