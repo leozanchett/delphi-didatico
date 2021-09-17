@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8EE0AD18-2ABA-412B-87AD-0E1157134B62}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="StaticArrays.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DynamicArrays.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="StaticArrays">
+        <MSBuild Projects="StaticArrays.dproj"/>
+    </Target>
+    <Target Name="StaticArrays:Clean">
+        <MSBuild Projects="StaticArrays.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StaticArrays:Make">
+        <MSBuild Projects="StaticArrays.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DynamicArrays">
+        <MSBuild Projects="DynamicArrays.dproj"/>
+    </Target>
+    <Target Name="DynamicArrays:Clean">
+        <MSBuild Projects="DynamicArrays.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DynamicArrays:Make">
+        <MSBuild Projects="DynamicArrays.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="StaticArrays;DynamicArrays"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="StaticArrays:Clean;DynamicArrays:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="StaticArrays:Make;DynamicArrays:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
