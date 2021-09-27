@@ -5,7 +5,7 @@ interface
 type
 
    TShow = class
-      class procedure Show(const _AValor: String; _AQuebrarLinha: boolean = True);
+      class procedure Show(const _AValor: String; _AWait: boolean = false; _AQuebrarLinha: boolean = True);
       class procedure Separador;
       class procedure PulaLinha;
       class procedure Auwait;
@@ -32,12 +32,14 @@ begin
    WriteLn('----------------------------------------------------');
 end;
 
-class procedure TShow.Show(const _AValor: String; _AQuebrarLinha: boolean = True);
+class procedure TShow.Show(const _AValor: String; _AWait: boolean = false; _AQuebrarLinha: boolean = True);
 begin
    if _AQuebrarLinha then   
       Writeln(_AValor)
    else
       Write(_AValor + ' ');
+   if _AWait then  
+      Auwait;   
 end;
 
 end.
