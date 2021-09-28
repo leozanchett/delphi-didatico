@@ -30,7 +30,7 @@ var
    DateList: array of TMyDate;
    i: Integer;
    AMeuRecord: TMyRecord;
-
+   
 { TMyRecord }
 
 procedure TMyRecord.Init(NewValue: Integer);
