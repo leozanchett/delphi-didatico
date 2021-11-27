@@ -32,6 +32,10 @@ type
       procedure Show;
    end;
 
+   TIntegerHelper = record helper for Integer
+      function ToHelperString: String;
+   end;
+
 var
    Form1: TForm1;
 
@@ -66,10 +70,20 @@ end;
 procedure TForm1.FormShow(Sender: TObject);
 var
    ATeste: TMyObject;
+   Ainteger: Integer;
 begin
    ATeste := TMyObject.Create;
    ATeste.Show;
    ATeste.Free;
+   Ainteger := 15;
+   ShowMessage(Ainteger.ToHelperString);
+end;
+
+{ TIntegerHelper }
+
+function TIntegerHelper.ToHelperString: String;
+begin
+   Result := IntToStr(Self);
 end;
 
 end.
